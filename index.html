@@ -19,13 +19,14 @@
 				font-size: 20px;
 				padding: 6px 6px 6px 6px;
 				background-color: rgba(0, 0, 0, 0.3);
-				border: 1px solid #bfbfbf;
-				border-radius: 2px;
+				border: none;
+				border-radius: 0px;
+				border-bottom: 1px solid #bfbfbf;
 				color: #ffffff;
 				margin-bottom: 0;
 				outline: none;
 				box-shadow: none;
-				width: 80%;
+				width: 60%;
 				text-align: center;
 			}
 			#proport {
@@ -39,13 +40,67 @@
 				margin-top: 60px;
 				padding: 20px;
 			}
+			#navi {
+				background: #ffffff;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				text-align: center;
+				height: 50px;
+				line-height: 50px;
+				border: none;
+				border-bottom: solid;
+				border-bottom-width: 1px;
+				border-bottom-color: #bfbfbf;
+			}
+			.mens {
+				position: absolute;
+				padding: 5px 8px;
+				top: 8px;
+				left: 8px;
+				line-height: 1;
+				color: inherit;
+				background: transparent;
+				border: 0;
+				border-radius: 5px;
+			}
+			input, select {
+				-webkit-appearance: none;
+			}
 		</style>
 	</head>
 	<body>
+		<div id="navi">
+			<button class="mens" onclick="mens()">
+				<svg aria-hidden="true" class="octicon octicon-three-bars" height="24" version="1.1" viewBox="0 0 12 16" width="18"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
+			</button>
+		</div>
 		<div id="proport">
-			<input type="tel" id="curnet" class="visput" placeholder="" value="0"><br>
+			<input type="tel" id="curnet" class="visput" placeholder="" value="0">
+			<select class="visput" id="" style="width: 30%; border-bottom: none;">
+				<option value="JPY">ドル（＄）</option>
+				<option value="JPY">円（¥）</option>
+			</select>
+			<br>
+			<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjkgMTI5IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMjkgMTI5IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgogIDxnPgogICAgPHBhdGggZD0ibTEyMS4zLDM0LjZjLTEuNi0xLjYtNC4yLTEuNi01LjgsMGwtNTEsNTEuMS01MS4xLTUxLjFjLTEuNi0xLjYtNC4yLTEuNi01LjgsMC0xLjYsMS42LTEuNiw0LjIgMCw1LjhsNTMuOSw1My45YzAuOCwwLjggMS44LDEuMiAyLjksMS4yIDEsMCAyLjEtMC40IDIuOS0xLjJsNTMuOS01My45YzEuNy0xLjYgMS43LTQuMiAwLjEtNS44eiIgZmlsbD0iI0ZGRkZGRiIvPgogIDwvZz4KPC9zdmc+Cg==" height="30px">
+			<br>
+			<input type="tel" id="cursult" class="visput" placeholder="" value="0" style="border-bottom: none;" disabled>
+			<select class="visput" id="" style="width: 30%; border-bottom: none;">
+				<option value="JPY">円（¥）</option>
+				<option value="USD">ドル（＄）</option>
+			</select><br>
 			<span id="sidn"></span>
 			<script type="text/javascript">
+				document.getElementById("curnet").style.boxShadow = "0px 0px 10px #ffffff";
+				setTimeout( function () {
+					document.getElementById("curnet").style.boxShadow = "0px 0px 0px #ffffff";
+				}, 600)
+				setTimeout( function () {
+					document.getElementById("curnet").style.boxShadow = "0px 0px 10px #ffffff";
+				}, 1200)
+				setTimeout( function () {
+					document.getElementById("curnet").style.boxShadow = "0px 0px 0px #ffffff";
+				}, 1800)
 				function getRate(from, to) {
 					var script = document.createElement('script');
 					script.setAttribute('src', "https://query.yahooapis.com/v1/public/yql?q=select%20rate%2Cname%20from%20csv%20where%20url%3D'http%3A%2F%2Fdownload.finance.yahoo.com%2Fd%2Fquotes%3Fs%3D"+from+to+"%253DX%26f%3Dl1n'%20and%20columns%3D'rate%2Cname'&format=json&callback=parseExchangeRate");
@@ -64,3 +119,4 @@
 		</div>
 	</body>
 </html>
+
