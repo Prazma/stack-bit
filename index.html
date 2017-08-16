@@ -29,6 +29,9 @@
 				width: 60%;
 				text-align: center;
 			}
+			.visput:disabled {
+				opacity: 1;
+			}
 			#proport {
 				text-align: center;
 				background: rgba(0,0,0,0.3);
@@ -67,6 +70,10 @@
 			input, select {
 				-webkit-appearance: none;
 			}
+			#sidn {
+				font-size: 30px;
+				color: #ffffff;
+			}
 		</style>
 	</head>
 	<body>
@@ -76,16 +83,16 @@
 			</button>
 		</div>
 		<div id="proport">
-			<input type="tel" id="curnet" class="visput" placeholder="" value="0">
-			<select class="visput" id="" style="width: 30%; border-bottom: none;">
-				<option value="JPY">ドル（＄）</option>
+			<input type="tel" id="curnet" class="visput" placeholder="" value="0" onfocus="ock()" onblur="chk()" onkeyup="upd()"  autofocus>
+			<select class="visput" id="fsone" style="width: 30%; border-bottom: none;">
+				<option value="USD">ドル（＄）</option>
 				<option value="JPY">円（¥）</option>
 			</select>
 			<br>
 			<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjkgMTI5IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMjkgMTI5IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgogIDxnPgogICAgPHBhdGggZD0ibTEyMS4zLDM0LjZjLTEuNi0xLjYtNC4yLTEuNi01LjgsMGwtNTEsNTEuMS01MS4xLTUxLjFjLTEuNi0xLjYtNC4yLTEuNi01LjgsMC0xLjYsMS42LTEuNiw0LjIgMCw1LjhsNTMuOSw1My45YzAuOCwwLjggMS44LDEuMiAyLjksMS4yIDEsMCAyLjEtMC40IDIuOS0xLjJsNTMuOS01My45YzEuNy0xLjYgMS43LTQuMiAwLjEtNS44eiIgZmlsbD0iI0ZGRkZGRiIvPgogIDwvZz4KPC9zdmc+Cg==" height="30px">
 			<br>
 			<input type="tel" id="cursult" class="visput" placeholder="" value="0" style="border-bottom: none;" disabled>
-			<select class="visput" id="" style="width: 30%; border-bottom: none;">
+			<select class="visput" id="fstwo" style="width: 30%; border-bottom: none;">
 				<option value="JPY">円（¥）</option>
 				<option value="USD">ドル（＄）</option>
 			</select><br>
@@ -109,12 +116,35 @@
 				function parseExchangeRate(data) {
 					var name = data.query.results.row.name;
 					var rate = parseFloat(data.query.results.row.rate, 10);
-					document.getElementById("sidn").innerHTML = "為替レート" + name + "は：" + rate;
-					setTimeout(function () {
-						getRate("USD", "JPY")
-					}, 1)
+					var sata = document.getElementById("curnet").value;
+					document.getElementById("cursult").value = rate * sata;
+					var poel = document.getElementById("fstwo").value;
+					if(poel == "JPY") {
+						poel = "円";
+					}
+					if(poel == "USD") {
+						poel = "ドル";
+					}
+					var rata = Math.floor(rate);
+					document.getElementById("sidn").innerHTML = rata * sata + poel;
 				}
-				getRate("USD", "JPY");
+				function chk() {
+					var cont = document.getElementById("curnet").value;
+					if(cont == "") {
+						document.getElementById("curnet").value = "0";
+					}
+				}
+				function upd() {
+					var one = document.getElementById("fsone").value;
+					var two = document.getElementById("fstwo").value;
+					getRate(one, two);	
+				}
+				function ock() {
+					var stvr = document.getElementById("curnet").value;
+					if(stvr == "0") {
+						document.getElementById("curnet").value = "";
+					}
+				}
 			</script>
 		</div>
 	</body>
