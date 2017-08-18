@@ -93,6 +93,40 @@
 				color: #000;
 				width: 100%;
 			}
+			#quik {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100vh;
+			}
+			#display {
+				background: #F96B00;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to right, #F96B00, #F9607D);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to right, #F96B00, #F9607D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				background: #F96B00, #F9607D;
+				height: 40vh;
+				
+			}
+			#calc {
+				background: #292D4B;
+				height: 60vh;
+				
+			}
+			.crcy {
+				-webkit-appearance: none;
+				width: 40%;
+				font-size: 25px;
+				padding: 10px;
+				border-radius: 0px;
+				margin: 0;
+				color: #ffffff;
+				background: #292D4B;
+				border: 1px solid #F8F8F8;
+			}
+			.crcy:focus {
+				box-shadow: 0px 0px 10px #ffffff;
+			}
 		</style>
 	</head>
 	<body>
@@ -121,7 +155,7 @@
 			<span id="navistat">0</span>
 		</div>
 		<div id="proport">
-			<input type="tel" id="curnet" class="visput" placeholder="" value="0" onfocus="ock()" onblur="chk()" onkeyup="upd()"  autofocus>
+			<input type="tel" id="curnet" class="visput" placeholder="" value="0" onfocus="ock()" onblur="chk()" onkeyup="upd()">
 			<select class="visput" id="fsone" style="width: 30%; border-bottom: none;">
 				<option value="USD">ドル（＄）</option>
 				<option value="JPY">円（¥）</option>
@@ -135,6 +169,23 @@
 				<option value="USD">ドル（＄）</option>
 			</select><br>
 			<span id="sidn"></span>
+			<div id="quik">
+				<div id="display"><span >1209</span></div>
+				<div id="calc">
+					<div>
+						<br>
+						<select class="crcy" id="frscrcy">
+							<option value="usd">ドル（＄）</option>
+							<option value="jpy">円（￥）</option>
+						</select>
+						<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8cGF0aCBkPSJNMzYwLjczMSwyMjkuMDc1bC0yMjUuMS0yMjUuMWMtNS4zLTUuMy0xMy44LTUuMy0xOS4xLDBzLTUuMywxMy44LDAsMTkuMWwyMTUuNSwyMTUuNWwtMjE1LjUsMjE1LjUgICBjLTUuMyw1LjMtNS4zLDEzLjgsMCwxOS4xYzIuNiwyLjYsNi4xLDQsOS41LDRjMy40LDAsNi45LTEuMyw5LjUtNGwyMjUuMS0yMjUuMUMzNjUuOTMxLDI0Mi44NzUsMzY1LjkzMSwyMzQuMjc1LDM2MC43MzEsMjI5LjA3NXogICAiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" height="20px"/>
+						<select class="crcy" id="frscrcy">
+							<option value="jpy">円（￥）</option>
+							<option value="usd">ドル（＄）</option>
+						</select>
+					</div>
+				</div>
+			</div>
 			<script type="text/javascript">
 				document.getElementById("curnet").style.boxShadow = "0px 0px 10px #ffffff";
 				setTimeout( function () {
@@ -197,4 +248,5 @@
 		</div>
 	</body>
 </html>
+
 
