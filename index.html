@@ -223,10 +223,17 @@
 					if(upd == "USD") {
 						document.getElementById("disext").innerHTML = "ドル";
 					}
+					var frs = document.getElementById("frscrcy").value;
+					var sec = document.getElementById("seccrcy").value;
+					getRate(frs, sec);
 				}
 				function updonecur() {
 					var upd = document.getElementById("frscrcy").value;
 					document.getElementById("firstvalue").innerHTML = upd;
+					var frs = document.getElementById("frscrcy").value;
+					var sec = document.getElementById("seccrcy").value;
+					getRate(frs, sec);
+					
 				}
 				function getRate(from, to) {
 					var script = document.createElement('script');
