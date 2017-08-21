@@ -7,6 +7,9 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Prazma/stackbit/master/img/stackiconBeta.png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
 			html {
 				-webkit-user-select: none;
@@ -142,9 +145,10 @@
 				font-size: 35px;
 			}
 			#minibtn {
-				background: rgba(0,0,0,0.1);
+				background: #ffffff;
 				border: none;
-				height: 5vh;
+				border-bottom: 1px solid #bfbfbf;
+				height: 50px;
 				width: 100%;
 			}
 			.calcbtn {
@@ -189,7 +193,11 @@
 		<div id="proport">
 			<div id="quik">
 				<div id="display"><div id="marg">
-				<button id="minibtn"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjkgMTI5IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMjkgMTI5IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgogIDxnPgogICAgPHBhdGggZD0ibTEyMS4zLDM0LjZjLTEuNi0xLjYtNC4yLTEuNi01LjgsMGwtNTEsNTEuMS01MS4xLTUxLjFjLTEuNi0xLjYtNC4yLTEuNi01LjgsMC0xLjYsMS42LTEuNiw0LjIgMCw1LjhsNTMuOSw1My45YzAuOCwwLjggMS44LDEuMiAyLjksMS4yIDEsMCAyLjEtMC40IDIuOS0xLjJsNTMuOS01My45YzEuNy0xLjYgMS43LTQuMiAwLjEtNS44eiIgZmlsbD0iI0ZGRkZGRiIvPgogIDwvZz4KPC9zdmc+Cg==" height="30px"></button>
+					<div id="minibtn">
+						<button class="mens" onclick="mens()">
+							<svg aria-hidden="true" class="octicon octicon-three-bars" height="24" version="1.1" viewBox="0 0 12 16" width="18"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
+						</button>
+					</div>
 					<br><br><span class="calcnum" id="dispan">0</span><span class="calcnum" id="disext">円</span>
 					</div>
 				</div>
@@ -197,15 +205,17 @@
 					<div>
 						<br>
 						<input type="tel" id="curnet" class="crcy" value="0" onblur="chk()" onfocus="ock()" style="width: 50%; padding: 13px 10px;">
-						<select class="crcy" id="frscrcy" onchange="updonecur()">
+						<select class="crcy" id="frscrcy" onchange="updonecur()" data-toggle="tooltip" title="クリックして通過を変えることができます">
 							<option value="USD">ドル（＄）</option>
+							<option value="BTC">ビットコイン</option>
 							<option value="JPY">円（￥）</option>
 						</select><br>
 						<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjkgMTI5IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMjkgMTI5IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgogIDxnPgogICAgPHBhdGggZD0ibTEyMS4zLDM0LjZjLTEuNi0xLjYtNC4yLTEuNi01LjgsMGwtNTEsNTEuMS01MS4xLTUxLjFjLTEuNi0xLjYtNC4yLTEuNi01LjgsMC0xLjYsMS42LTEuNiw0LjIgMCw1LjhsNTMuOSw1My45YzAuOCwwLjggMS44LDEuMiAyLjksMS4yIDEsMCAyLjEtMC40IDIuOS0xLjJsNTMuOS01My45YzEuNy0xLjYgMS43LTQuMiAwLjEtNS44eiIgZmlsbD0iI0ZGRkZGRiIvPgogIDwvZz4KPC9zdmc+Cg==" height="40px"/>
 						<br>
-						<select class="crcy" id="seccrcy" onchange="updtwocur()" style="width: 90%">
+						<select class="crcy" id="seccrcy" onchange="updtwocur()" style="width: 90%" data-toggle="tooltip" title="クリックして通過を変えることができます">
 							<option value="JPY">円（￥）</option>
 							<option value="USD">ドル（＄）</option>
+							<option value="BTC">ビットコイン</option>
 						</select>
 					</div>
 				</div>
@@ -290,6 +300,20 @@
 						document.getElementById("navistat").innerHTML = "0";
 					}
 				}
+			</script>
+			<script>
+				$('#frscrcy').tooltip({trigger: 'manual'});
+				$('#seccrcy').tooltip({trigger: 'manual'});
+				document.getElementById("frscrcy").style.boxShadow = "0px 0px 10px #ffffff";
+				document.getElementById("seccrcy").style.boxShadow = "0px 0px 10px #ffffff";
+				$('#frscrcy').tooltip("show");
+				$('#seccrcy').tooltip("show");
+				setTimeout( function () {
+					$('#frscrcy').tooltip("hide");
+					$('#seccrcy').tooltip("hide");
+				document.getElementById("frscrcy").style.boxShadow = "0px 0px 0px #ffffff";
+				document.getElementById("seccrcy").style.boxShadow = "0px 0px 0px #ffffff";
+				}, 2000)
 			</script>
 		</div>
 	</body>
