@@ -181,6 +181,51 @@
 			.platbtn:hover {
 				box-shadow: 0px 0px 20px #ffffff;
 			}
+			.cry {
+			    background: rgba(255,255,255,0.3);
+			    border: 1px solid #ffffff;
+			    color: #ffffff;
+				padding: 5px;
+				font-size: 20px;
+				width: 90%;
+				margin-top: 20px;
+			}
+			::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: #ffffff;
+            }
+            ::-moz-placeholder { /* Firefox 19+ */
+                color: #ffffff;
+            }
+            :-ms-input-placeholder { /* IE 10+ */
+                color: #ffffff;
+            }
+            :-moz-placeholder { /* Firefox 18- */
+                color: #ffffff;
+            }
+            #dsh {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                background: #292D4B;
+            }
+			#portlog {
+				margin-top: 60px;
+			}
+			.clsbtn {
+				background: transparent;
+				border: 2px solid #ffffff;
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+				color: #ffffff;
+				font-size: 30px;
+				position: fixed;
+				top: 10px;
+				right: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -220,7 +265,7 @@
 							<option value="USD">ドル（＄）</option>
 							<option value="BTC">ビットコイン</option>
 						</select><br><br>
-						<button class="platbtn">
+						<button class="platbtn" onclick="dshmdn()">
 							<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzEuMDU5IDMxLjA1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzEuMDU5IDMxLjA1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDMxLjA1OUM2Ljk2NiwzMS4wNTksMCwyNC4wOTIsMCwxNS41MjlDMCw2Ljk2Niw2Ljk2NiwwLDE1LjUyOSwwDQoJCQljOC41NjMsMCwxNS41MjksNi45NjYsMTUuNTI5LDE1LjUyOUMzMS4wNTksMjQuMDkyLDI0LjA5MiwzMS4wNTksMTUuNTI5LDMxLjA1OXogTTE1LjUyOSwxLjc3NA0KCQkJYy03LjU4NSwwLTEzLjc1NSw2LjE3MS0xMy43NTUsMTMuNzU1czYuMTcsMTMuNzU0LDEzLjc1NSwxMy43NTRjNy41ODQsMCwxMy43NTQtNi4xNywxMy43NTQtMTMuNzU0UzIzLjExMywxLjc3NCwxNS41MjksMS43NzR6Ig0KCQkJLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMjEuNjUyLDE2LjQxNkg5LjQwNmMtMC40OSwwLTAuODg4LTAuMzk2LTAuODg4LTAuODg3YzAtMC40OSwwLjM5Ny0wLjg4OCwwLjg4OC0wLjg4OGgxMi4yNDYNCgkJCWMwLjQ5LDAsMC44ODcsMC4zOTgsMC44ODcsMC44ODhDMjIuNTM5LDE2LjAyLDIyLjE0MywxNi40MTYsMjEuNjUyLDE2LjQxNnoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDIyLjUzOWMtMC40OSwwLTAuODg4LTAuMzk3LTAuODg4LTAuODg3VjkuNDA2YzAtMC40OSwwLjM5OC0wLjg4OCwwLjg4OC0wLjg4OA0KCQkJYzAuNDksMCwwLjg4NywwLjM5OCwwLjg4NywwLjg4OHYxMi4yNDZDMTYuNDE2LDIyLjE0MywxNi4wMiwyMi41MzksMTUuNTI5LDIyLjUzOXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" height="20px">
 							<span style="margin-left: 10px;">価格をセーブ</span>
 						</button>
@@ -243,7 +288,7 @@
 					}
 				}
 				function dshmdn() {
-				  location.replace("/save");
+					document.getElementById("dsh").style.display = "block";
 				}
 				function updtwocur() {
 					var upd = document.getElementById("seccrcy").value;
@@ -320,6 +365,9 @@
 						document.getElementById("navistat").innerHTML = "0";
 					}
 				}
+				function clslogport() {
+					document.getElementById("dsh").style.display = "none";
+				}
 			</script>
 			<script>
 				$('#frscrcy').tooltip({trigger: 'manual'});
@@ -341,7 +389,7 @@
 				<span style="margin-left: 10px;">
 					<button class="menbtn" onclick="dshmdn()">
 						<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzEuMDU5IDMxLjA1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzEuMDU5IDMxLjA1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDMxLjA1OUM2Ljk2NiwzMS4wNTksMCwyNC4wOTIsMCwxNS41MjlDMCw2Ljk2Niw2Ljk2NiwwLDE1LjUyOSwwDQoJCQljOC41NjMsMCwxNS41MjksNi45NjYsMTUuNTI5LDE1LjUyOUMzMS4wNTksMjQuMDkyLDI0LjA5MiwzMS4wNTksMTUuNTI5LDMxLjA1OXogTTE1LjUyOSwxLjc3NA0KCQkJYy03LjU4NSwwLTEzLjc1NSw2LjE3MS0xMy43NTUsMTMuNzU1czYuMTcsMTMuNzU0LDEzLjc1NSwxMy43NTRjNy41ODQsMCwxMy43NTQtNi4xNywxMy43NTQtMTMuNzU0UzIzLjExMywxLjc3NCwxNS41MjksMS43NzR6Ig0KCQkJLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMjEuNjUyLDE2LjQxNkg5LjQwNmMtMC40OSwwLTAuODg4LTAuMzk2LTAuODg4LTAuODg3YzAtMC40OSwwLjM5Ny0wLjg4OCwwLjg4OC0wLjg4OGgxMi4yNDYNCgkJCWMwLjQ5LDAsMC44ODcsMC4zOTgsMC44ODcsMC44ODhDMjIuNTM5LDE2LjAyLDIyLjE0MywxNi40MTYsMjEuNjUyLDE2LjQxNnoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDIyLjUzOWMtMC40OSwwLTAuODg4LTAuMzk3LTAuODg4LTAuODg3VjkuNDA2YzAtMC40OSwwLjM5OC0wLjg4OCwwLjg4OC0wLjg4OA0KCQkJYzAuNDksMCwwLjg4NywwLjM5OCwwLjg4NywwLjg4OHYxMi4yNDZDMTYuNDE2LDIyLjE0MywxNi4wMiwyMi41MzksMTUuNTI5LDIyLjUzOXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" height="20px">
-						<span style="margin-left: 10px;">新しい価格</span>
+						<span style="margin-left: 10px;">価格を登録</span>
 					</button>
 				</span>
 			</span><br>
@@ -353,6 +401,21 @@
 				</span>
 			</span><br>
 		</div>
+		</div>
+		<div id="dsh" style="display: none">
+			<button class="clsbtn" onclick="clslogport()">x</button>
+			<div id="portlog">
+				<input id="usrup" type="text" placeholder="メールアドレス" class="cry"><br>
+				<input id="pswup" type="password" placeholder="パスワード" class="cry"><br>
+				<input id="pswaup" type="password" placeholder="パスワードを再入力" class="cry"><br><br>
+				<button class="platbtn">
+					<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzEuMDU5IDMxLjA1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzEuMDU5IDMxLjA1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDMxLjA1OUM2Ljk2NiwzMS4wNTksMCwyNC4wOTIsMCwxNS41MjlDMCw2Ljk2Niw2Ljk2NiwwLDE1LjUyOSwwDQoJCQljOC41NjMsMCwxNS41MjksNi45NjYsMTUuNTI5LDE1LjUyOUMzMS4wNTksMjQuMDkyLDI0LjA5MiwzMS4wNTksMTUuNTI5LDMxLjA1OXogTTE1LjUyOSwxLjc3NA0KCQkJYy03LjU4NSwwLTEzLjc1NSw2LjE3MS0xMy43NTUsMTMuNzU1czYuMTcsMTMuNzU0LDEzLjc1NSwxMy43NTRjNy41ODQsMCwxMy43NTQtNi4xNywxMy43NTQtMTMuNzU0UzIzLjExMywxLjc3NCwxNS41MjksMS43NzR6Ig0KCQkJLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMjEuNjUyLDE2LjQxNkg5LjQwNmMtMC40OSwwLTAuODg4LTAuMzk2LTAuODg4LTAuODg3YzAtMC40OSwwLjM5Ny0wLjg4OCwwLjg4OC0wLjg4OGgxMi4yNDYNCgkJCWMwLjQ5LDAsMC44ODcsMC4zOTgsMC44ODcsMC44ODhDMjIuNTM5LDE2LjAyLDIyLjE0MywxNi40MTYsMjEuNjUyLDE2LjQxNnoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDIyLjUzOWMtMC40OSwwLTAuODg4LTAuMzk3LTAuODg4LTAuODg3VjkuNDA2YzAtMC40OSwwLjM5OC0wLjg4OCwwLjg4OC0wLjg4OA0KCQkJYzAuNDksMCwwLjg4NywwLjM5OCwwLjg4NywwLjg4OHYxMi4yNDZDMTYuNDE2LDIyLjE0MywxNi4wMiwyMi41MzksMTUuNTI5LDIyLjUzOXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" height="20px">
+					アカウントを作成
+				</button>
+				<br><br>
+				<span style="color: #ffffff">アカウントを持っている場合、</span><br>
+				<button class="platbtn">ログインする</button>
+			</div>
 		</div>
 	</body>
 </html>
