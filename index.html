@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>StackBit</title>
+		<title>StackFams</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<meta name="apple-mobile-web-app-title" content="StackBit">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -93,6 +93,7 @@
 				background: #ffffff;
 				position: fixed;
 				top: 50px;
+				left: 0;
 				width: 100%;
 				line-height: 50px;
 				border: none;
@@ -104,6 +105,7 @@
 			.menbtn {
 				background: #ffffff;
 				border: none;
+				border-bottom: 1px solid #f1f1f1;
 				color: #000;
 				width: 100%;
 			}
@@ -163,6 +165,19 @@
 				width: 0%;
 				background: 
 			}
+			.platbtn {
+				background: #ffffff;
+				color: #292D4B;
+				border: 2px solid #ffffff;
+				border-radius: 5px;
+				width: 90%;
+				padding: 6px 6px;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
+			}
+			.platbtn:hover {
+				box-shadow: 0px 0px 20px #ffffff;
+			}
 		</style>
 	</head>
 	<body>
@@ -171,24 +186,9 @@
 				<svg aria-hidden="true" class="octicon octicon-three-bars" height="24" version="1.1" viewBox="0 0 12 16" width="18"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
 			</button>
 		</div>
-		<div id="pentaside" style="display: none;">
-			<span>
-				<span style="margin-left: 10px;">
-					<button class="menbtn" onclick="dshmdn()">
-						<svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
-						<span style="margin-left: 10px;">ダッシュボード</span></button>
-				</span>
-			</span><br>
-			<span>
-				<span style="margin-left: 10px;">
-					<button class="menbtn" onclick="dshmdn()">
-						<svg aria-hidden="true" class="octicon octicon-telescope" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M8 9l3 6h-1l-2-4v5H7v-6l-2 5H4l2-5 2-1zM7 0H6v1h1V0zM5 3H4v1h1V3zM2 1H1v1h1V1zM.63 9a.52.52 0 0 0-.16.67l.55.92c.13.23.41.31.64.2l1.39-.66-1.16-2-1.27.86.01.01zm7.89-5.39l-5.8 3.95L3.95 9.7l6.33-3.03-1.77-3.06h.01zm4.22 1.28l-1.47-2.52a.51.51 0 0 0-.72-.17l-1.2.83 1.84 3.2 1.33-.64c.27-.13.36-.44.22-.7z"></path></svg>
-						<span style="margin-left: 10px;">プロファイル</span></button>
-				</span>
-			</span><br>
-		</div>
 		<div style="display: none">
 			<span id="navistat">0</span>
+			<span id="menstat">0</span>
 		</div>
 		<div id="proport">
 			<div id="quik">
@@ -216,7 +216,11 @@
 							<option value="JPY">円（￥）</option>
 							<option value="USD">ドル（＄）</option>
 							<option value="BTC">ビットコイン</option>
-						</select>
+						</select><br><br>
+						<button class="platbtn">
+							<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzEuMDU5IDMxLjA1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzEuMDU5IDMxLjA1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDMxLjA1OUM2Ljk2NiwzMS4wNTksMCwyNC4wOTIsMCwxNS41MjlDMCw2Ljk2Niw2Ljk2NiwwLDE1LjUyOSwwDQoJCQljOC41NjMsMCwxNS41MjksNi45NjYsMTUuNTI5LDE1LjUyOUMzMS4wNTksMjQuMDkyLDI0LjA5MiwzMS4wNTksMTUuNTI5LDMxLjA1OXogTTE1LjUyOSwxLjc3NA0KCQkJYy03LjU4NSwwLTEzLjc1NSw2LjE3MS0xMy43NTUsMTMuNzU1czYuMTcsMTMuNzU0LDEzLjc1NSwxMy43NTRjNy41ODQsMCwxMy43NTQtNi4xNywxMy43NTQtMTMuNzU0UzIzLjExMywxLjc3NCwxNS41MjksMS43NzR6Ig0KCQkJLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMjEuNjUyLDE2LjQxNkg5LjQwNmMtMC40OSwwLTAuODg4LTAuMzk2LTAuODg4LTAuODg3YzAtMC40OSwwLjM5Ny0wLjg4OCwwLjg4OC0wLjg4OGgxMi4yNDYNCgkJCWMwLjQ5LDAsMC44ODcsMC4zOTgsMC44ODcsMC44ODhDMjIuNTM5LDE2LjAyLDIyLjE0MywxNi40MTYsMjEuNjUyLDE2LjQxNnoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDIyLjUzOWMtMC40OSwwLTAuODg4LTAuMzk3LTAuODg4LTAuODg3VjkuNDA2YzAtMC40OSwwLjM5OC0wLjg4OCwwLjg4OC0wLjg4OA0KCQkJYzAuNDksMCwwLjg4NywwLjM5OCwwLjg4NywwLjg4OHYxMi4yNDZDMTYuNDE2LDIyLjE0MywxNi4wMiwyMi41MzksMTUuNTI5LDIyLjUzOXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" height="20px">
+							<span style="margin-left: 10px;">価格をセーブ</span>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -225,6 +229,19 @@
 				<span id="secondvalue"></span>
 			</div>
 			<script type="text/javascript">
+				function mens() {
+					var stat = document.getElementById("menstat").innerHTML;
+					if(stat == "0") {
+						document.getElementById("pentaside").style.display = "block";
+						document.getElementById("menstat").innerHTML = "1";
+					} else {
+						document.getElementById("pentaside").style.display = "none";
+						document.getElementById("menstat").innerHTML = "0";
+					}
+				}
+				function dshmdn() {
+				  location.replace("/save");
+				}
 				function updtwocur() {
 					var upd = document.getElementById("seccrcy").value;
 					document.getElementById("secondvalue").innerHTML = upd;
@@ -315,6 +332,24 @@
 				document.getElementById("seccrcy").style.boxShadow = "0px 0px 0px #ffffff";
 				}, 2000)
 			</script>
+			
+		<div id="pentaside" style="display: none;">
+			<span>
+				<span style="margin-left: 10px;">
+					<button class="menbtn" onclick="dshmdn()">
+						<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzEuMDU5IDMxLjA1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzEuMDU5IDMxLjA1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDMxLjA1OUM2Ljk2NiwzMS4wNTksMCwyNC4wOTIsMCwxNS41MjlDMCw2Ljk2Niw2Ljk2NiwwLDE1LjUyOSwwDQoJCQljOC41NjMsMCwxNS41MjksNi45NjYsMTUuNTI5LDE1LjUyOUMzMS4wNTksMjQuMDkyLDI0LjA5MiwzMS4wNTksMTUuNTI5LDMxLjA1OXogTTE1LjUyOSwxLjc3NA0KCQkJYy03LjU4NSwwLTEzLjc1NSw2LjE3MS0xMy43NTUsMTMuNzU1czYuMTcsMTMuNzU0LDEzLjc1NSwxMy43NTRjNy41ODQsMCwxMy43NTQtNi4xNywxMy43NTQtMTMuNzU0UzIzLjExMywxLjc3NCwxNS41MjksMS43NzR6Ig0KCQkJLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMjEuNjUyLDE2LjQxNkg5LjQwNmMtMC40OSwwLTAuODg4LTAuMzk2LTAuODg4LTAuODg3YzAtMC40OSwwLjM5Ny0wLjg4OCwwLjg4OC0wLjg4OGgxMi4yNDYNCgkJCWMwLjQ5LDAsMC44ODcsMC4zOTgsMC44ODcsMC44ODhDMjIuNTM5LDE2LjAyLDIyLjE0MywxNi40MTYsMjEuNjUyLDE2LjQxNnoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDIyLjUzOWMtMC40OSwwLTAuODg4LTAuMzk3LTAuODg4LTAuODg3VjkuNDA2YzAtMC40OSwwLjM5OC0wLjg4OCwwLjg4OC0wLjg4OA0KCQkJYzAuNDksMCwwLjg4NywwLjM5OCwwLjg4NywwLjg4OHYxMi4yNDZDMTYuNDE2LDIyLjE0MywxNi4wMiwyMi41MzksMTUuNTI5LDIyLjUzOXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" height="20px">
+						<span style="margin-left: 10px;">新しい価格</span>
+					</button>
+				</span>
+			</span><br>
+			<span>
+				<span style="margin-left: 10px;">
+					<button class="menbtn" onclick="dshmdn()">
+						<svg aria-hidden="true" class="octicon octicon-telescope" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M8 9l3 6h-1l-2-4v5H7v-6l-2 5H4l2-5 2-1zM7 0H6v1h1V0zM5 3H4v1h1V3zM2 1H1v1h1V1zM.63 9a.52.52 0 0 0-.16.67l.55.92c.13.23.41.31.64.2l1.39-.66-1.16-2-1.27.86.01.01zm7.89-5.39l-5.8 3.95L3.95 9.7l6.33-3.03-1.77-3.06h.01zm4.22 1.28l-1.47-2.52a.51.51 0 0 0-.72-.17l-1.2.83 1.84 3.2 1.33-.64c.27-.13.36-.44.22-.7z"></path></svg>
+						<span style="margin-left: 10px;">ダッシュボード</span></button>
+				</span>
+			</span><br>
+		</div>
 		</div>
 	</body>
 </html>
