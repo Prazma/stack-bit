@@ -301,11 +301,6 @@
 		</style>
 	</head>
 	<body>
-		<div id="navi">
-			<button class="mens" onclick="mens()">
-				<svg aria-hidden="true" class="octicon octicon-three-bars" height="24" version="1.1" viewBox="0 0 12 16" width="18"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
-			</button>
-		</div>
 		<div style="display: none">
 			<span id="navistat">0</span>
 			<span id="menstat">0</span>
@@ -313,29 +308,36 @@
 		<div id="proport">
 			<div id="quik">
 				<div id="display"><div id="marg">
-					<div id="minibtn">
-						<button class="mens" onclick="mens()">
-							<svg aria-hidden="true" class="octicon octicon-three-bars" height="24" version="1.1" viewBox="0 0 12 16" width="18"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
-						</button>
-					</div>
-					<br><br><span class="calcnum" id="dispan">0</span><span class="calcnum" id="disext">円</span>
+					<br><br><span class="calcnum" id="dispan" style="font-size: 60px">0 </span><br><span class="calcnum" id="disext" style="font-size: 30px;">JPY (¥)</span>
 					</div>
 				</div>
 				<div id="calc">
 					<div>
 						<br>
-						<input type="tel" id="curnet" class="crcy" value="0" onblur="chk()" onfocus="ock()" style="width: 54.5%; padding: 13px 10px;">
+						<input type="tel" id="curnet" class="crcy" value="0" onkeyup="chk()" onfocus="ock()" style="width: 54.5%; padding: 13px 10px;">
 						<select class="crcy" id="frscrcy" onchange="updonecur()" data-toggle="tooltip" title="クリックして通貨を変えることができます" style="padding: 13px 10px;">
-							<option value="USD">ドル（＄）</option>
-							<option value="BTC">ビットコイン</option>
-							<option value="JPY">円（￥）</option>
+							<option value="usd">USD ($)</option>
+							<option value="eur">EUR (€)</option>
+							<option value="jpy">JPY (¥)</option>
+							<option value="gbp">GBP (£)</option>
+							<option value="aud">AUD (A$)</option>
+							<option value="chf">CHF (Fr)</option>
+							<option value="cny">CNY (元)</option>
+							<option value="sek">SEK (kr)</option>
+							<option value="nzd">NZD (NZ$)</option>
 						</select><br>
 						<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjkgMTI5IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMjkgMTI5IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgogIDxnPgogICAgPHBhdGggZD0ibTEyMS4zLDM0LjZjLTEuNi0xLjYtNC4yLTEuNi01LjgsMGwtNTEsNTEuMS01MS4xLTUxLjFjLTEuNi0xLjYtNC4yLTEuNi01LjgsMC0xLjYsMS42LTEuNiw0LjIgMCw1LjhsNTMuOSw1My45YzAuOCwwLjggMS44LDEuMiAyLjksMS4yIDEsMCAyLjEtMC40IDIuOS0xLjJsNTMuOS01My45YzEuNy0xLjYgMS43LTQuMiAwLjEtNS44eiIgZmlsbD0iI0ZGRkZGRiIvPgogIDwvZz4KPC9zdmc+Cg==" height="40px"/>
 						<br>
 						<select class="crcy" id="seccrcy" onchange="updtwocur()" style="width: 90%" data-toggle="tooltip" title="クリックして通貨を変えることができます" style="padding: 13px 10px;">
-							<option value="JPY">円（￥）</option>
-							<option value="USD">ドル（＄）</option>
-							<option value="BTC">ビットコイン</option>
+							<option value="jpy">JPY (¥)</option>
+							<option value="usd">USD ($)</option>
+							<option value="eur">EUR (€)</option>
+							<option value="gbp">GBP (£)</option>
+							<option value="aud">AUD (A$)</option>
+							<option value="chf">CHF (Fr)</option>
+							<option value="cny">CNY (元)</option>
+							<option value="sek">SEK (kr)</option>
+							<option value="nzd">NZD (NZ$)</option>
 						</select><br><br>
 						<button class="platbtn" onclick="dshmdn()">
 							<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzEuMDU5IDMxLjA1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzEuMDU5IDMxLjA1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDMxLjA1OUM2Ljk2NiwzMS4wNTksMCwyNC4wOTIsMCwxNS41MjlDMCw2Ljk2Niw2Ljk2NiwwLDE1LjUyOSwwDQoJCQljOC41NjMsMCwxNS41MjksNi45NjYsMTUuNTI5LDE1LjUyOUMzMS4wNTksMjQuMDkyLDI0LjA5MiwzMS4wNTksMTUuNTI5LDMxLjA1OXogTTE1LjUyOSwxLjc3NA0KCQkJYy03LjU4NSwwLTEzLjc1NSw2LjE3MS0xMy43NTUsMTMuNzU1czYuMTcsMTMuNzU0LDEzLjc1NSwxMy43NTRjNy41ODQsMCwxMy43NTQtNi4xNywxMy43NTQtMTMuNzU0UzIzLjExMywxLjc3NCwxNS41MjksMS43NzR6Ig0KCQkJLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMjEuNjUyLDE2LjQxNkg5LjQwNmMtMC40OSwwLTAuODg4LTAuMzk2LTAuODg4LTAuODg3YzAtMC40OSwwLjM5Ny0wLjg4OCwwLjg4OC0wLjg4OGgxMi4yNDYNCgkJCWMwLjQ5LDAsMC44ODcsMC4zOTgsMC44ODcsMC44ODhDMjIuNTM5LDE2LjAyLDIyLjE0MywxNi40MTYsMjEuNjUyLDE2LjQxNnoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDIyLjUzOWMtMC40OSwwLTAuODg4LTAuMzk3LTAuODg4LTAuODg3VjkuNDA2YzAtMC40OSwwLjM5OC0wLjg4OCwwLjg4OC0wLjg4OA0KCQkJYzAuNDksMCwwLjg4NywwLjM5OCwwLjg4NywwLjg4OHYxMi4yNDZDMTYuNDE2LDIyLjE0MywxNi4wMiwyMi41MzksMTUuNTI5LDIyLjUzOXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" height="20px">
@@ -365,10 +367,10 @@
 				function updtwocur() {
 					var upd = document.getElementById("seccrcy").value;
 					document.getElementById("secondvalue").innerHTML = upd;
-					if(upd == "JPY") {	
+					if(upd == "jpy") {	
 						document.getElementById("disext").innerHTML = "円";
 					}
-					if(upd == "USD") {
+					if(upd == "usd") {
 						document.getElementById("disext").innerHTML = "ドル";
 					}
 					var frs = document.getElementById("frscrcy").value;
@@ -384,31 +386,78 @@
 					
 				}
 				function getRate(from, to) {
-					var script = document.createElement('script');
-					script.setAttribute('src', "https://query.yahooapis.com/v1/public/yql?q=select%20rate%2Cname%20from%20csv%20where%20url%3D'http%3A%2F%2Fdownload.finance.yahoo.com%2Fd%2Fquotes%3Fs%3D"+from+to+"%253DX%26f%3Dl1n'%20and%20columns%3D'rate%2Cname'&format=json&callback=parseExchangeRate");
-					document.body.appendChild(script);
-				}
-				function parseExchangeRate(data) {
-					var name = data.query.results.row.name;
-					var rate = parseFloat(data.query.results.row.rate, 10);
-					var sadf = document.getElementById("curnet").value;
-					document.getElementById("dispan").innerHTML = Math.floor(rate) * sadf;
+					const secr = document.getElementById("seccrcy");
+					var textry = secr.options[secr.selectedIndex].text;
+					if(from == "usd") {
+						var frs = 109.32;
+					}
+					if(to == "usd") {
+						var sec = 109.32;
+					}
+					if(from == "eur") {
+						var frs = 129.06;
+					}
+					if(to == "eur") {
+						var sec = 129.06;
+					}
+					if(from == "jpy") {
+						var frs = 1;
+					}
+					if(to == "jpy") {
+						var sec = 1;
+					}
+					if(from == "gbp") {
+						var frs = 140.32;
+					}
+					if(to == "gbp") {
+						var sec = 140.32;
+					}
+					if(from == "aud") {
+						var frs = 86.37;
+					}
+					if(to == "aud") {
+						var sec = 86.37;
+					}
+					if(from == "cad") {
+						var frs = 87.33;
+					}
+					if(to == "cad") {
+						var sec = 87.33;
+					}
+					if(from == "chf") {
+						var frs = 113.48;
+					}
+					if(to == "chf") {
+						var sec = 113.48;
+					}
+					if(from == "cny") {
+						var frs = 16.42;
+					}
+					if(to == "cny") {
+						var sec = 16.42;
+					}
+					if(from == "sek") {
+						var frs = 13.56;
+					}
+					if(to == "sek") {
+						var sec = 13.56;
+					}
+					if(from == "nzd") {
+						var frs = 78.90;
+					}
+					if(to == "nzd") {
+						var sec = 78.90;
+					}
+					var rate = frs/sec;
+					var inp = document.getElementById("curnet").value;
+					var calc = rate*inp;
+					document.getElementById("dispan").innerHTML = Math.floor(calc)+" ";
+					document.getElementById("disext").innerHTML = textry;
 				}
 				function chk() {
-					var cont = document.getElementById("curnet").value;
-					if(cont == "") {
-						document.getElementById("curnet").value = "0";
-					} else {
-						var frs = document.getElementById("frscrcy").value;
-						var sec = document.getElementById("seccrcy").value;
-						getRate(frs, sec);
-					}
-				}
-				function chkd() {
-					var cont = document.getElementById("turnet").value;
-					if(cont == "") {
-						document.getElementById("turnet").value = "0";
-					}
+					var frs = document.getElementById("frscrcy").value;
+					var sec = document.getElementById("seccrcy").value;
+					getRate(frs, sec);
 				}
 				function upd() {
 					var one = document.getElementById("fsone").value;
@@ -427,66 +476,6 @@
 						document.getElementById("turnet").value = "";
 					}
 				}
-				function mens() {
-					var stat = document.getElementById("navistat").innerHTML;
-					if(stat == "0") {
-						document.getElementById("pentaside").style.display = "block";
-						document.getElementById("navistat").innerHTML = "1";
-					} else {
-						document.getElementById("pentaside").style.display = "none";
-						document.getElementById("navistat").innerHTML = "0";
-					}
-				}
-				function clslogport() {
-					document.getElementById("dsh").style.display = "none";
-				}
-				function clspostport() {
-					document.getElementById("dshporter").style.display = "none";
-				}
-				function dshruby() {
-					location.replace("https://stackfams-tomocode.c9users.io/save");
-				}
-				function signup() {
-					var email = document.getElementById("usrup").value;
-					var password = document.getElementById("pswup").value;
-					firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-						var errorCode = error.code;
-						var errorMessage = error.message;
-						if(errorCode == "auth/invalid-email") {
-							document.getElementById("error").innerHTML = "有効なメールアドレスを入力してください。";
-						} else {
-							document.getElementById("error").innerHTML = errorMessage;
-						}
-					});
-					firebase.auth().onAuthStateChanged(function(user) {
-						if (user) {
-							document.getElementById("dshporter").style.display = "block";
-						} else {
-							
-						}
-					});
-				}
-				function login() {
-					var email = document.getElementById("usrup").value;
-					var password = document.getElementById("pswup").value;
-					firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-						var errorCode = error.code;
-						var errorMessage = error.message;
-						if(errorCode == "auth/invalid-email") {
-							document.getElementById("error").innerHTML = "有効なメールアドレスを入力してください。";
-						}
-					});
-					firebase.auth().onAuthStateChanged(function(user) {
-						if (user) {
-							document.getElementById("dshporter").style.display = "block";
-							var price = document.getElementById("dispan").innerHTML;
-							var curre = document.getElementById("disext").innerHTML;
-							document.getElementById("primemo").innerHTML = price + curre;
-						} else {
-							
-						}
-					});
-				}
 			</script>
 			<script>
 				$('#frscrcy').tooltip({trigger: 'manual'});
@@ -502,59 +491,7 @@
 				document.getElementById("seccrcy").style.boxShadow = "0px 0px 0px #ffffff";
 				}, 2000)
 			</script>
-			
-		<div id="pentaside" style="display: none;">
-			<span>
-				<span style="margin-left: 10px;">
-					<button class="menbtn" onclick="dshruby()">
-						<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzEuMDU5IDMxLjA1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzEuMDU5IDMxLjA1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDMxLjA1OUM2Ljk2NiwzMS4wNTksMCwyNC4wOTIsMCwxNS41MjlDMCw2Ljk2Niw2Ljk2NiwwLDE1LjUyOSwwDQoJCQljOC41NjMsMCwxNS41MjksNi45NjYsMTUuNTI5LDE1LjUyOUMzMS4wNTksMjQuMDkyLDI0LjA5MiwzMS4wNTksMTUuNTI5LDMxLjA1OXogTTE1LjUyOSwxLjc3NA0KCQkJYy03LjU4NSwwLTEzLjc1NSw2LjE3MS0xMy43NTUsMTMuNzU1czYuMTcsMTMuNzU0LDEzLjc1NSwxMy43NTRjNy41ODQsMCwxMy43NTQtNi4xNywxMy43NTQtMTMuNzU0UzIzLjExMywxLjc3NCwxNS41MjksMS43NzR6Ig0KCQkJLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMjEuNjUyLDE2LjQxNkg5LjQwNmMtMC40OSwwLTAuODg4LTAuMzk2LTAuODg4LTAuODg3YzAtMC40OSwwLjM5Ny0wLjg4OCwwLjg4OC0wLjg4OGgxMi4yNDYNCgkJCWMwLjQ5LDAsMC44ODcsMC4zOTgsMC44ODcsMC44ODhDMjIuNTM5LDE2LjAyLDIyLjE0MywxNi40MTYsMjEuNjUyLDE2LjQxNnoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDIyLjUzOWMtMC40OSwwLTAuODg4LTAuMzk3LTAuODg4LTAuODg3VjkuNDA2YzAtMC40OSwwLjM5OC0wLjg4OCwwLjg4OC0wLjg4OA0KCQkJYzAuNDksMCwwLjg4NywwLjM5OCwwLjg4NywwLjg4OHYxMi4yNDZDMTYuNDE2LDIyLjE0MywxNi4wMiwyMi41MzksMTUuNTI5LDIyLjUzOXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" height="20px">
-						<span style="margin-left: 10px;">価格掲示板</span>
-					</button>
-				</span>
-			</span><br>
-			<span>
-				<span style="margin-left: 10px;">
-					<button class="menbtn" onclick="dshmdn()">
-						<svg aria-hidden="true" class="octicon octicon-telescope" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M8 9l3 6h-1l-2-4v5H7v-6l-2 5H4l2-5 2-1zM7 0H6v1h1V0zM5 3H4v1h1V3zM2 1H1v1h1V1zM.63 9a.52.52 0 0 0-.16.67l.55.92c.13.23.41.31.64.2l1.39-.66-1.16-2-1.27.86.01.01zm7.89-5.39l-5.8 3.95L3.95 9.7l6.33-3.03-1.77-3.06h.01zm4.22 1.28l-1.47-2.52a.51.51 0 0 0-.72-.17l-1.2.83 1.84 3.2 1.33-.64c.27-.13.36-.44.22-.7z"></path></svg>
-						<span style="margin-left: 10px;">ダッシュボード</span></button>
-				</span>
-			</span><br>
-		</div>
-		</div>
-		<div id="dsh" style="display: none">
-			<button class="clsbtn" onclick="clslogport()"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0OTYuMTU4IDQ5Ni4xNTgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5Ni4xNTggNDk2LjE1ODsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIHN0eWxlPSJmaWxsOiNFMDRGNUY7IiBkPSJNNDk2LjE1OCwyNDguMDg1YzAtMTM3LjAyMS0xMTEuMDctMjQ4LjA4Mi0yNDguMDc2LTI0OC4wODJDMTExLjA3LDAuMDAzLDAsMTExLjA2MywwLDI0OC4wODUgIGMwLDEzNy4wMDIsMTExLjA3LDI0OC4wNywyNDguMDgyLDI0OC4wN0MzODUuMDg4LDQ5Ni4xNTUsNDk2LjE1OCwzODUuMDg3LDQ5Ni4xNTgsMjQ4LjA4NXoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIGQ9Ik0yNzcuMDQyLDI0OC4wODJsNzIuNTI4LTg0LjE5NmM3LjkxLTkuMTgyLDYuODc2LTIzLjA0MS0yLjMxLTMwLjk1MSAgYy05LjE3Mi03LjkwNC0yMy4wMzItNi44NzYtMzAuOTQ3LDIuMzA2bC02OC4yMzYsNzkuMjEybC02OC4yMjktNzkuMjEyYy03LjkxLTkuMTg4LTIxLjc3MS0xMC4yMTYtMzAuOTU0LTIuMzA2ICBjLTkuMTg2LDcuOTEtMTAuMjE0LDIxLjc3LTIuMzA0LDMwLjk1MWw3Mi41MjIsODQuMTk2bC03Mi41MjIsODQuMTkyYy03LjkxLDkuMTgyLTYuODgyLDIzLjA0MSwyLjMwNCwzMC45NTEgIGM0LjE0MywzLjU2OSw5LjI0MSw1LjMxOCwxNC4zMTYsNS4zMThjNi4xNjEsMCwxMi4yOTQtMi41ODYsMTYuNjM4LTcuNjI0bDY4LjIyOS03OS4yMTJsNjguMjM2LDc5LjIxMiAgYzQuMzM4LDUuMDQxLDEwLjQ3LDcuNjI0LDE2LjYzNyw3LjYyNGM1LjA2OSwwLDEwLjE2OC0xLjc0OSwxNC4zMTEtNS4zMThjOS4xODYtNy45MSwxMC4yMi0yMS43NywyLjMxLTMwLjk1MUwyNzcuMDQyLDI0OC4wODJ6Ii8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" height="40px"/></button>
-			<div id="portlog">
-				<span style="font-size: 15px; color: #ffffff; font-weight: bold;">StackBit IDで下記の機能が使えます</span><br>
-				<div id="kinport">
-					<button class="kinbtn" style="background: #ED4F7B; box-shadow: 0px 0px 10px #ED4F7B;">価格メモへの保存</button>
-					<button class="kinbtn" style="background: #F7B42A; box-shadow: 0px 0px 10px #F7B42A;">価格を比較</button>
-					<button class="kinbtn" style="background: #8ECC2F; box-shadow: 0px 0px 10px #8ECC2F;">現在の為替</button>
-					<button class="kinbtn" style="background: #2CB2FD; box-shadow: 0px 0px 10px #2CB2FD;">他にもたくさん！</button>
-				</div><hr>
-				<input id="usrup" type="text" placeholder="メールアドレス" class="cry"><br>
-				<input id="pswup" type="password" placeholder="パスワード" class="cry"><br>
-				<span id="error" style="color: #ED4F7B; text-shadow: 0px 0px 10px #ED4F7B;"></span>
-				<br>
-				<button class="platbtn" onclick="login()">ログインする</button>
-				<button class="platbtn" onclick="signup()" style="margin-top: 20px;">StackBit IDを作成</button>
-			</div>
-		</div>
-		<div id="dshporter" style="display: none;">
-			<div class="titleconhu" style="margin-top: 60px">
-    			メモを作成
-    			</div>
-			<div class="postconhu">
-				<button class="clsbtn" onclick="clspostport()"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0OTYuMTU4IDQ5Ni4xNTgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5Ni4xNTggNDk2LjE1ODsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIHN0eWxlPSJmaWxsOiNFMDRGNUY7IiBkPSJNNDk2LjE1OCwyNDguMDg1YzAtMTM3LjAyMS0xMTEuMDctMjQ4LjA4Mi0yNDguMDc2LTI0OC4wODJDMTExLjA3LDAuMDAzLDAsMTExLjA2MywwLDI0OC4wODUgIGMwLDEzNy4wMDIsMTExLjA3LDI0OC4wNywyNDguMDgyLDI0OC4wN0MzODUuMDg4LDQ5Ni4xNTUsNDk2LjE1OCwzODUuMDg3LDQ5Ni4xNTgsMjQ4LjA4NXoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIGQ9Ik0yNzcuMDQyLDI0OC4wODJsNzIuNTI4LTg0LjE5NmM3LjkxLTkuMTgyLDYuODc2LTIzLjA0MS0yLjMxLTMwLjk1MSAgYy05LjE3Mi03LjkwNC0yMy4wMzItNi44NzYtMzAuOTQ3LDIuMzA2bC02OC4yMzYsNzkuMjEybC02OC4yMjktNzkuMjEyYy03LjkxLTkuMTg4LTIxLjc3MS0xMC4yMTYtMzAuOTU0LTIuMzA2ICBjLTkuMTg2LDcuOTEtMTAuMjE0LDIxLjc3LTIuMzA0LDMwLjk1MWw3Mi41MjIsODQuMTk2bC03Mi41MjIsODQuMTkyYy03LjkxLDkuMTgyLTYuODgyLDIzLjA0MSwyLjMwNCwzMC45NTEgIGM0LjE0MywzLjU2OSw5LjI0MSw1LjMxOCwxNC4zMTYsNS4zMThjNi4xNjEsMCwxMi4yOTQtMi41ODYsMTYuNjM4LTcuNjI0bDY4LjIyOS03OS4yMTJsNjguMjM2LDc5LjIxMiAgYzQuMzM4LDUuMDQxLDEwLjQ3LDcuNjI0LDE2LjYzNyw3LjYyNGM1LjA2OSwwLDEwLjE2OC0xLjc0OSwxNC4zMTEtNS4zMThjOS4xODYtNy45MSwxMC4yMi0yMS43NywyLjMxLTMwLjk1MUwyNzcuMDQyLDI0OC4wODJ6Ii8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" height="40px"/></button>
-				<span id="primemo" style="font-size: 30px; color: #000000;">12990円</span><br>
-				<select class="crcyd" id="memotarg" style="width: 90%; margin-top: 18px;">
-					<option value="未選択">用途を選択（未選択）</option>
-					<option value="両替">両替</option>
-					<option value="買い物">買い物</option>
-					<option value="収入">収入</option>
-					<option value="送金">送金</option>
-				</select>
-				<button class="crcyd" style="width: 90%; font-size: 15px; padding: 5px 5px; background: #4267b2; color: #ffffff; border-radius: 3px; margin-top: 20px; margin-bottom: 15px;">投稿</button>
-			</div>
 		</div>
 	</body>
 </html>
+
