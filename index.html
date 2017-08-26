@@ -317,7 +317,7 @@
 				<div id="calc">
 					<div>
 						<br>
-						<input type="tel" id="curnet" class="crcy" value="0" onkeyup="chk()" onfocus="ock()" style="width: 54.5%; padding: 13px 10px;">
+						<input type="tel" id="curnet" class="crcy" value="0" onblur="chkbck()" onkeyup="chk()" onfocus="ock()" style="width: 54.5%; padding: 13px 10px;">
 						<select class="crcy" id="frscrcy" onchange="updonecur()" data-toggle="tooltip" title="クリックして通貨を変えることができます" style="padding: 13px 10px;">
 							<option value="---" disabled>-人気の通貨-</option>
 							<option value="USD">USD ($)</option>
@@ -733,6 +733,12 @@
 					var stvr = document.getElementById("turnet").value;
 					if(stvr == "0") {
 						document.getElementById("turnet").value = "";
+					}
+				}
+				function chkbck() {
+					var stat = document.getElementById("curnet").value;
+					if(stat == "") {
+						document.getElementById("curnet").value = "0";
 					}
 				}
 			</script>
