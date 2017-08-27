@@ -774,7 +774,7 @@
 							localStorage.historyStackbitAuthData = fin;
 							alert(localStorage.historyStackbitAuthData);
 							document.getElementById("reshist").innerHTML = "";
-							var histws = fin.split(" ");
+							var histws = fin.split(",");
 							for (i = 0; i < histws.length; i++) {
 								alert(histws[i])
 								document.getElementById("reshist").innerHTML += "<div class='histcloud>'" + histws[i] + "</div><br>";
