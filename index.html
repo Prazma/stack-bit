@@ -754,6 +754,7 @@
 						var fin = localStorage.historyStackbitAuthData;
 						var histws = fin.split(",");
 						var clow = histws.length;
+						document.getElementById("reshist").innerHTML = "";
 						for (i = 1; i < histws.length; i++) {
 							document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 						}
@@ -790,6 +791,7 @@
 						var fort = document.getElementById("curnet").value;
 						document.getElementById("dispan").innerHTML = (rate.toFixed(2)*fort);
 						if (localStorage.historyStackbitAuthData) {
+							document.getElementById("reshist").innerHTML = "";
 							var woa = document.getElementById("curnet").value;
 							var wod = document.getElementById("frscrcy").value;
 							var wok = document.getElementById("seccrcy").value;
