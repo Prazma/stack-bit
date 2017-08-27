@@ -770,7 +770,7 @@
 							var fok = document.getElementById("dispan").innerHTML;
 							var str = localStorage.historyStackbitAuthData.split(" ");
 							str.push(woa+wod+">"+fok+wok)
-							var fin = str.join();
+							var fin = str.join(",");
 							localStorage.historyStackbitAuthData = fin;
 							alert(localStorage.historyStackbitAuthData);
 							document.getElementById("reshist").innerHTML = "";
