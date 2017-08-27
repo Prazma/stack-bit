@@ -753,8 +753,9 @@
 					if (localStorage.historyStackbitAuthData) {
 						var fin = localStorage.historyStackbitAuthData;
 						var histws = fin.split(",");
-						for (i = 0; i < histws.length; i++) {
-							document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[i] + "</div><br>";
+						var clow = histws.length;
+						for (i = 1; i < histws.length; i++) {
+							document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 						}
 					}
 				}
@@ -799,8 +800,9 @@
 							localStorage.historyStackbitAuthData = fin;
 							document.getElementById("reshist").innerHTML = "";
 							var histws = fin.split(",");
-							for (i = 0; i < histws.length; i++) {
-								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[i] + "</div><br>";
+							var clow = histws.length;
+							for (i = 1; i < histws.length; i++) {
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 							}
 						} else {
 							var woa = document.getElementById("curnet").value;
