@@ -772,11 +772,9 @@
 							str.push(woa+wod+">"+fok+wok)
 							var fin = str.join(",");
 							localStorage.historyStackbitAuthData = fin;
-							alert(localStorage.historyStackbitAuthData);
 							document.getElementById("reshist").innerHTML = "";
 							var histws = fin.split(",");
 							for (i = 0; i < histws.length; i++) {
-								alert(histws[i])
 								document.getElementById("reshist").innerHTML += "<div class='histcloud>'" + histws[i] + "</div><br>";
 							}
 						} else {
@@ -787,7 +785,6 @@
 							var hist = [];
 							hist.push(woa+wod+">"+fok+wok)
 							var stats = hist.join();
-							alert(stats);
 							localStorage.historyStackbitAuthData = stats;
 							document.getElementById("reshist").innerHTML = "";
 							document.getElementById("reshist").innerHTML = "<div class='histcloud'>"+stats+"</div><br>";
