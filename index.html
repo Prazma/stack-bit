@@ -150,9 +150,11 @@
 				width: 35%;
 				font-size: 19px;
 				padding: 10px;
-				border-radius: 0px;
+				border-radius: 6px;
+				box-shadow: 0px 0px 2px #888888;
 				margin: 0;
 				color: #000000;
+				font-weight: bold; 
 				background: #ffffff;
 				border: 1px solid;
 				border-color: #e5e6e9 #dfe0e4 #d0d1d5;
@@ -196,15 +198,18 @@
 			.platbtn {
 				background: #ffffff;
 				color: #292D4B;
-				border: 2px solid #ffffff;
-				border-radius: 5px;
+				border: 1px solid;
+				border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 				width: 90%;
-				padding: 6px 6px;
+				border-radius: 6px;
+				box-shadow: 0px 0px 2px #888888;
+				font-weight: bold; 
+				padding: 11px 6px;
 				transition: 0.5s;
 				-webkit-transition: 0.5s;
 			}
 			.platbtn:hover {
-				box-shadow: 0px 0px 20px #ffffff;
+				box-shadow: 0px 0px 10px #888888;
 			}
 			.cry {
 			    background: rgba(255,255,255,0.3);
@@ -301,6 +306,23 @@
             	border: 1px solid #dddfe2;
             	border-bottom: none;
             }
+			#history {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				height: 100vh;
+				background: #f1f1f1;
+			}
+			.round {
+				background: #ffffff;
+				padding: 10px 10px 10px 10px;
+				position: fixed;
+				left: 15px;
+				top: 15px;
+				border-radius: 50%;
+				border: 5px solid #ffffff;
+				box-shadow: 0px 0px 5px #888888;
+			}
 		</style>
 	</head>
 	<body>
@@ -495,7 +517,7 @@
 							<option value="ZMK">ZMK</option>
 							<option value="ZWL">ZWL</option>
 						</select><br>
-						<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjkgMTI5IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMjkgMTI5IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgogIDxnPgogICAgPHBhdGggZD0ibTEyMS4zLDM0LjZjLTEuNi0xLjYtNC4yLTEuNi01LjgsMGwtNTEsNTEuMS01MS4xLTUxLjFjLTEuNi0xLjYtNC4yLTEuNi01LjgsMC0xLjYsMS42LTEuNiw0LjIgMCw1LjhsNTMuOSw1My45YzAuOCwwLjggMS44LDEuMiAyLjksMS4yIDEsMCAyLjEtMC40IDIuOS0xLjJsNTMuOS01My45YzEuNy0xLjYgMS43LTQuMiAwLjEtNS44eiIgZmlsbD0iI0ZGRkZGRiIvPgogIDwvZz4KPC9zdmc+Cg==" height="40px"/>
+						<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjkgMTI5IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMjkgMTI5IiB3aWR0aD0iMzJweCIgaGVpZ2h0PSIzMnB4Ij4KICA8Zz4KICAgIDxwYXRoIGQ9Im0xMjEuMywzNC42Yy0xLjYtMS42LTQuMi0xLjYtNS44LDBsLTUxLDUxLjEtNTEuMS01MS4xYy0xLjYtMS42LTQuMi0xLjYtNS44LDAtMS42LDEuNi0xLjYsNC4yIDAsNS44bDUzLjksNTMuOWMwLjgsMC44IDEuOCwxLjIgMi45LDEuMiAxLDAgMi4xLTAuNCAyLjktMS4ybDUzLjktNTMuOWMxLjctMS42IDEuNy00LjIgMC4xLTUuOHoiIGZpbGw9IiMwMDAwMDAiLz4KICA8L2c+Cjwvc3ZnPgo=" height="40px"/>
 						<br>
 						<select class="crcy" id="seccrcy" onchange="updtwocur()" style="width: 90%" data-toggle="tooltip" title="クリックして通貨を変えることができます" style="padding: 13px 10px;">
 							<option value="---" disabled>-人気の通貨-</option>
@@ -750,17 +772,15 @@
 			<script>
 				$('#frscrcy').tooltip({trigger: 'manual'});
 				$('#seccrcy').tooltip({trigger: 'manual'});
-				document.getElementById("frscrcy").style.boxShadow = "0px 0px 10px #ffffff";
-				document.getElementById("seccrcy").style.boxShadow = "0px 0px 10px #ffffff";
 				$('#frscrcy').tooltip("show");
 				$('#seccrcy').tooltip("show");
 				setTimeout( function () {
 					$('#frscrcy').tooltip("hide");
 					$('#seccrcy').tooltip("hide");
-				document.getElementById("frscrcy").style.boxShadow = "0px 0px 0px #ffffff";
-				document.getElementById("seccrcy").style.boxShadow = "0px 0px 0px #ffffff";
 				}, 2000)
 			</script>
 		</div>
 	</body>
 </html>
+
+
