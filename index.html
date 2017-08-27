@@ -749,16 +749,7 @@
 				<span id="secondvalue"></span>
 			</div>
 			<script type="text/javascript">
-				if (localStorage.historyStackbitAuthData) {
-					var str = localStorage.historyStackbitAuthData.split(" ");
-					var fin = str.join(",");
-					localStorage.historyStackbitAuthData = fin;
-					document.getElementById("reshist").innerHTML = "";
-					var histws = fin.split(",");
-					for (i = 0; i < histws.length; i++) {
-						document.getElementById("reshist").innerHTML += "<div class='histcloud>'" + histws[i] + "</div><br>";
-					}	
-				}
+				chk();
 				function cihou() {
 					document.getElementById("history").style.display = "block";
 					document.getElementById("proport").style.display = "none";
