@@ -365,7 +365,7 @@
 			}
 		</style>
 	</head>
-	<body onload="chk()">
+	<body onload="tek()">
 		<div style="display: none">
 			<span id="navistat">0</span>
 			<span id="menstat">0</span>
@@ -749,6 +749,15 @@
 				<span id="secondvalue"></span>
 			</div>
 			<script type="text/javascript">
+				function tek() {
+					if (localStorage.historyStackbitAuthData) {
+						var fin = localStorage.historyStackbitAuthData;
+						var histws = fin.split(",");
+						for (i = 0; i < histws.length; i++) {
+							document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[i] + "</div><br>";
+						}
+					}
+				}
 				function cihou() {
 					document.getElementById("history").style.display = "block";
 					document.getElementById("proport").style.display = "none";
