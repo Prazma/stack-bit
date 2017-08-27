@@ -214,6 +214,20 @@
 			.platbtn:hover {
 				box-shadow: 0px 0px 10px #888888;
 			}
+			.histbtn {
+				background: #ffffff;
+				color: #292D4B;
+				border: 1px solid;
+				border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+				width: 90%;
+				border-radius: 6px;
+				border: 1px solid #bfbfbf;
+				font-weight: bold; 
+				padding: 11px 6px;
+			}
+			.histbtn:hover {
+				box-shadow: inset 0px 0px 3px #888888;
+			}
 			.cry {
 			    background: rgba(255,255,255,0.3);
 			    border: 1px solid #ffffff;
@@ -283,7 +297,7 @@
 			}
 			hr {
 				width: 90%;
-				box-shadow: 0px 0px 10px #ffffff;
+				border-color: #bfbfbf;
 			}
             .postconhu {
             	background: #ffffff;
@@ -313,7 +327,7 @@
 				position: fixed;
 				top: 0;
 				width: 100%;
-				height: 100vh;
+				min-height: 100vh;
 				background: #f1f1f1;
 			}
 			.round {
@@ -325,6 +339,14 @@
 				border-radius: 50%;
 				border: 5px solid #ffffff;
 				box-shadow: 0px 0px 5px #888888;
+			}
+			#clshis {
+				position: fixed;
+				bottom: 0px;
+				width: 100%;
+				padding: 10px 0px 10px 0px;
+				background: rgba(0, 0, 0, 0.2);
+				text-align: center;
 			}
 		</style>
 	</head>
@@ -342,7 +364,7 @@
 				<div id="calc">
 					<div>
 						<br>
-						<input type="tel" id="curnet" class="crcy" value="0" onblur="chkbck()" onkeyup="chk()" onfocus="ock()" style="width: 54.5%; padding: 13px 10px;">
+						<input type="tel" id="curnet" class="crcy" value="0" onblur="chkbck()" onchange="chk()" onfocus="ock()" style="width: 54.5%; padding: 13px 10px;">
 						<select class="crcy" id="frscrcy" onchange="updonecur()" data-toggle="tooltip" title="クリックして通貨を変えることができます" style="padding: 13px 10px;">
 							<option value="---" disabled>-人気の通貨-</option>
 							<option value="USD">USD ($)</option>
@@ -698,7 +720,8 @@
 							<option value="ZAR">ZAR</option>
 							<option value="ZMK">ZMK</option>
 							<option value="ZWL">ZWL</option>
-						</select><br><br>
+						</select><br><hr>
+						<button class="platbtn" onclick="cihou()">履歴</button>
 						<button class="platbtn" onclick="dshmdn()" style="display: none">
 							<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzEuMDU5IDMxLjA1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzEuMDU5IDMxLjA1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDMxLjA1OUM2Ljk2NiwzMS4wNTksMCwyNC4wOTIsMCwxNS41MjlDMCw2Ljk2Niw2Ljk2NiwwLDE1LjUyOSwwDQoJCQljOC41NjMsMCwxNS41MjksNi45NjYsMTUuNTI5LDE1LjUyOUMzMS4wNTksMjQuMDkyLDI0LjA5MiwzMS4wNTksMTUuNTI5LDMxLjA1OXogTTE1LjUyOSwxLjc3NA0KCQkJYy03LjU4NSwwLTEzLjc1NSw2LjE3MS0xMy43NTUsMTMuNzU1czYuMTcsMTMuNzU0LDEzLjc1NSwxMy43NTRjNy41ODQsMCwxMy43NTQtNi4xNywxMy43NTQtMTMuNzU0UzIzLjExMywxLjc3NCwxNS41MjksMS43NzR6Ig0KCQkJLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMjEuNjUyLDE2LjQxNkg5LjQwNmMtMC40OSwwLTAuODg4LTAuMzk2LTAuODg4LTAuODg3YzAtMC40OSwwLjM5Ny0wLjg4OCwwLjg4OC0wLjg4OGgxMi4yNDYNCgkJCWMwLjQ5LDAsMC44ODcsMC4zOTgsMC44ODcsMC44ODhDMjIuNTM5LDE2LjAyLDIyLjE0MywxNi40MTYsMjEuNjUyLDE2LjQxNnoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNMTUuNTI5LDIyLjUzOWMtMC40OSwwLTAuODg4LTAuMzk3LTAuODg4LTAuODg3VjkuNDA2YzAtMC40OSwwLjM5OC0wLjg4OCwwLjg4OC0wLjg4OA0KCQkJYzAuNDksMCwwLjg4NywwLjM5OCwwLjg4NywwLjg4OHYxMi4yNDZDMTYuNDE2LDIyLjE0MywxNi4wMiwyMi41MzksMTUuNTI5LDIyLjUzOXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" height="20px">
 							<span style="margin-left: 10px;">価格をメモ</span>
@@ -711,6 +734,9 @@
 				<span id="secondvalue"></span>
 			</div>
 			<script type="text/javascript">
+				function cihou() {
+					document.getElementById("history").style.display = "block";
+				}
 				function mens() {
 					var stat = document.getElementById("menstat").innerHTML;
 					if(stat == "0") {
@@ -732,14 +758,43 @@
 					chk();
 				}
 				function getRate(first, second) {
-						var demo = function(data) {
-							fx.rates = data.rates
-							var rate = fx(1).from(first).to(second)
-							var fort = document.getElementById("curnet").value;
-							document.getElementById("dispan").innerHTML = (rate.toFixed(2)*fort);
+					var demo = function(data) {
+						fx.rates = data.rates
+						var rate = fx(1).from(first).to(second)
+						var fort = document.getElementById("curnet").value;
+						document.getElementById("dispan").innerHTML = (rate.toFixed(2)*fort);
+						if (localStorage.historyStackbitAuthData) {
+							var woa = document.getElementById("curnet").value;
+							var wod = document.getElementById("frscrcy").value;
+							var wok = document.getElementById("seccrcy").value;
+							var fok = document.getElementById("dispan").innerHTML;
+							var str = localStorage.historyStackbitAuthData.split(" ");
+							str.push(woa+wod+">"+fok+wok)
+							var fin = str.join();
+							localStorage.historyStackbitAuthData = fin;
+							alert(localStorage.historyStackbitAuthData);
+							document.getElementById("reshist").innerHTML = "";
+							var histws = fin.split(" ");
+							for (i = 0; i < histws.length; i++) {
+								document.getElementById("reshist").innerHTML += "<div class='histcloud>'" + histws[histws.length - i] + "</div><br>";
+							}
+						} else {
+							var woa = document.getElementById("curnet").value;
+							var wod = document.getElementById("frscrcy").value;
+							var wok = document.getElementById("seccrcy").value;
+							var fok = document.getElementById("dispan").innerHTML;
+							var hist = [];
+							hist.push(woa+wod+">"+fok+wok)
+							var stats = hist.join();
+							alert(stats);
+							localStorage.historyStackbitAuthData = stats;
+							document.getElementById("reshist").innerHTML = "";
+							document.getElementById("reshist").innerHTML = "<div class='histcloud'>"+stats+"</div><br>";
 						}
-						
-						$.getJSON("https://api.fixer.io/latest", demo)	
+					}
+					
+					$.getJSON("https://api.fixer.io/latest", demo)
+					
 				}
 				function chk() {
 					var frs = document.getElementById("frscrcy").value;
@@ -753,8 +808,6 @@
 				}
 				function ock() {
 					var stvr = document.getElementById("curnet").value;
-					document.body.scrollTop = 0; 
-					document.documentElement.scrollTop = 0;
 					if(stvr == "0") {
 						document.getElementById("curnet").value = "";
 					}
@@ -765,12 +818,16 @@
 						document.getElementById("turnet").value = "";
 					}
 				}
+				function clshis() {
+					document.getElementById("history").style.display = "none";
+				}
 				function chkbck() {
 					var stat = document.getElementById("curnet").value;
 					if(stat == "") {
 						document.getElementById("curnet").value = "0";
 					}
 				}
+				'<button class="histbtn"></button>'
 			</script>
 			<script>
 				$('#frscrcy').tooltip({trigger: 'manual'});
@@ -783,5 +840,16 @@
 				}, 2000)
 			</script>
 		</div>
+		<div id="history" style="display: none;">
+			<div id="navi">履歴</div>
+			<div id="reshist" style="margin-top: 60px; text-align: center;">
+				<span style="font-weight: lighter; color: #737373;">履歴がありません</span>
+			</div>
+			<div id="clshis">
+				<button class="platbtn" onclick="clshis()">閉じる</button>
+			</div>
+		</div>
 	</body>
 </html>
+
+
