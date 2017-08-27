@@ -67,6 +67,7 @@
 				background: rgba(0,0,0,0.3);
 				color: #ffffff;
 				width: 80%;
+				display: block;
 				border: 1px solid #bfbfbf;
 				margin-right: auto;
 				margin-left: auto;
@@ -324,8 +325,6 @@
             	border-bottom: none;
             }
 			#history {
-				position: fixed;
-				top: 0;
 				width: 100%;
 				min-height: 100vh;
 				background: #f1f1f1;
@@ -347,6 +346,22 @@
 				padding: 10px 0px 10px 0px;
 				background: rgba(0, 0, 0, 0.2);
 				text-align: center;
+			}
+			.histcloud {
+				background: #ffffff;
+				color: #292D4B;
+				width: 90%;
+				border-radius: 6px;
+				box-shadow: 0px 0px 2px #888888;
+				font-weight: bold; 
+				padding: 11px 6px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				transition: 0.5s;
+				margin-right: auto;
+				font-size: 20px;
+				margin-left: auto;
+				-webkit-transition: 0.5s;
 			}
 		</style>
 	</head>
@@ -736,6 +751,7 @@
 			<script type="text/javascript">
 				function cihou() {
 					document.getElementById("history").style.display = "block";
+					document.getElementById("proport").style.display = "none";
 				}
 				function mens() {
 					var stat = document.getElementById("menstat").innerHTML;
@@ -783,7 +799,7 @@
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
 							var hist = [];
-							hist.push(woa+wod+">"+fok+wok)
+							hist.push(woa+wod+"から"+fok+wok)
 							var stats = hist.join();
 							localStorage.historyStackbitAuthData = stats;
 							document.getElementById("reshist").innerHTML = "";
@@ -818,6 +834,7 @@
 				}
 				function clshis() {
 					document.getElementById("history").style.display = "none";
+					document.getElementById("proport").style.display = "block";
 				}
 				function chkbck() {
 					var stat = document.getElementById("curnet").value;
@@ -840,8 +857,10 @@
 		</div>
 		<div id="history" style="display: none;">
 			<div id="navi">履歴</div>
-			<div id="reshist" style="margin-top: 60px; text-align: center;">
-				<span style="font-weight: lighter; color: #737373;">履歴がありません</span>
+			<div id="reshist" style="margin-top: 60px; text-align: center; margin-bottom: 100px;">
+				<div class="histcloud">
+					<span style="font-weight: lighter; color: #737373;">履歴がありません</span>
+				</div>
 			</div>
 			<div id="clshis">
 				<button class="platbtn" onclick="clshis()">閉じる</button>
@@ -849,5 +868,3 @@
 		</div>
 	</body>
 </html>
-
-
