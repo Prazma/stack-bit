@@ -776,7 +776,8 @@
 							document.getElementById("reshist").innerHTML = "";
 							var histws = fin.split(" ");
 							for (i = 0; i < histws.length; i++) {
-								document.getElementById("reshist").innerHTML += "<div class='histcloud>'" + histws[histws.length - i] + "</div><br>";
+								alert(histws[i])
+								document.getElementById("reshist").innerHTML += "<div class='histcloud>'" + histws[i] + "</div><br>";
 							}
 						} else {
 							var woa = document.getElementById("curnet").value;
