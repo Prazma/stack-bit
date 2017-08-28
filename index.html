@@ -920,14 +920,9 @@
 						}
 					}
 					
-					if(localStorage.timesused) {
-						localStorage.timesused = localStorage.timesused + 1;
-						alert(localStorage.timesused);
+					if(localStorage.timesusedStackBitAuth) {
 					} else {
-						localStorage.timesused = 1;
-					}
-					
-					if(localStorage.timesused == 2) {
+						localStorage.timesusedStackBitAuth = 1;
 						document.getElementById("expoly").style.display = "block";
 						document.getElementById("polyhist").style.background = "#404FAD";
 						document.getElementById("polyhist").style.padding = "30px";
