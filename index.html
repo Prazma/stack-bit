@@ -359,9 +359,25 @@
 				margin-bottom: 10px;
 				transition: 0.5s;
 				margin-right: auto;
+				text-align: right;
 				font-size: 20px;
 				margin-left: auto;
 				-webkit-transition: 0.5s;
+			}
+			.sturtol {
+				width: 100%;
+				color: #000000;
+				font-weight: bold;
+			}
+			.dltbtn {
+				background: #DC143C;
+				padding: 5px 10px 5px 10px;
+				border: 1px solid #C0392B;
+				border-radius: 6px;
+				color: #ffffff;
+				font-size: 18px;
+				margin-left: 20px;
+				margin-right: 20px;
 			}
 		</style>
 	</head>
@@ -756,9 +772,19 @@
 						var clow = histws.length;
 						document.getElementById("reshist").innerHTML = "";
 						for (i = 1; i < histws.length; i++) {
-							document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+							var tartar = clow - i;
+							document.getElementById("reshist").innerHTML += "<div class='histcloud' id='"+ tartar +"' onclick='dlt(this)'>" + histws[clow - i] + "<button id='"+i+"' class='dltbtn'>削除</button></div><br>";
 						}
 					}
+				}
+				function dlt(ele) {
+					var stat = ele.id - 1;
+					var fin = localStorage.historyStackbitAuthData;
+					var histws = fin.split(",");
+					var histor = histws.splice(stat, 1);
+					var strhis = histor.join(",");
+					localStorage.historyStackbitAuthData = strhis;
+					tek();
 				}
 				function cihou() {
 					document.getElementById("history").style.display = "block";
@@ -870,8 +896,8 @@
 		</div>
 		<div id="history" style="display: none;">
 			<div id="navi">履歴</div>
-			<div id="reshist" style="margin-top: 60px; text-align: center; margin-bottom: 100px;">
-				<div class="histcloud">
+			<div id="reshist" class="histcloud" style="margin-top: 60px; text-align: center; margin-bottom: 60px;">
+				<div class="sturtol">
 					<span style="font-weight: lighter; color: #737373;">履歴がありません</span>
 				</div>
 			</div>
