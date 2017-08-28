@@ -786,10 +786,11 @@
 				function dlt(ele) {
 					var stat = ele.id - 1;
 					var fin = localStorage.historyStackbitAuthData;
+					alert("dlt function: the localStorage is =>"+fin);
 					var histws = fin.split(",");
 					var histor = histws.splice(stat, 1);
 					var strhis = histor.join(",");
-					alert(histor);
+					alert("dlt function: after splice =>"+histor);
 					localStorage.historyStackbitAuthData = strhis;
 					tek();
 				}
