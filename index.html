@@ -770,10 +770,12 @@
 						var fin = localStorage.historyStackbitAuthData;
 						var histws = fin.split(",");
 						var clow = histws.length;
-						document.getElementById("reshist").innerHTML = "";
-						for (i = 1; i < histws.length; i++) {
-							var tartar = clow - i;
-							document.getElementById("reshist").innerHTML += "<div class='histcloud' id='"+ tartar +"' onclick='dlt(this)'>" + histws[clow - i] + "<button id='"+i+"' class='dltbtn'>削除</button></div><br>";
+						if(clow > 0) {
+							document.getElementById("reshist").innerHTML = "";
+							for (i = 1; i < histws.length; i++) {
+								var tartar = clow - i;
+								document.getElementById("reshist").innerHTML += "<div class='histcloud' id='"+ tartar +"'>" + histws[clow - i] + "<button id='"+i+"' class='dltbtn' onclick='dlt(this)'>削除</button></div><br>";
+							}
 						}
 					}
 				}
@@ -783,7 +785,7 @@
 					var histws = fin.split(",");
 					var histor = histws.splice(stat, 1);
 					var strhis = histor.join(",");
-					alert(strhis);
+					alert(histor);
 					localStorage.historyStackbitAuthData = strhis;
 					tek();
 				}
@@ -831,7 +833,7 @@
 							var histws = fin.split(",");
 							var clow = histws.length;
 							for (i = 1; i < histws.length; i++) {
-								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i]  + "<button id='"+i+"' class='dltbtn' onclick='dlt(this)'>削除</button></div><br></div><br>";
 							}
 						} else {
 							var woa = document.getElementById("curnet").value;
@@ -843,7 +845,7 @@
 							var stats = hist.join();
 							localStorage.historyStackbitAuthData = stats;
 							document.getElementById("reshist").innerHTML = "";
-							document.getElementById("reshist").innerHTML = "<div class='histcloud'>"+stats+"</div><br>";
+							document.getElementById("reshist").innerHTML = "<div class='histcloud'>"+stats + "<button id='"+i+"' class='dltbtn' onclick='dlt(this)'>削除</button></div><br></div><br>";
 						}
 					}
 					
