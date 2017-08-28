@@ -385,9 +385,13 @@
 				width: 65%;
 				font-size: 15px;
 				padding: 5px;
-				background: #ffffff;
-				color: #000000;
+				background: #F96B00;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to right, #F96B00, #F9607D);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to right, #F96B00, #F9607D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				background: #F96B00, #F9607D;
+				color: #ffffff;
 				border: 3px solid #ffffff;
+				font-weight: bold;
 				border-radius: 6px;
 				margin-top: 5px;
 				margin-bottom: 5px;
