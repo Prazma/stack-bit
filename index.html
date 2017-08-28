@@ -770,13 +770,14 @@
 						var fin = localStorage.historyStackbitAuthData;
 						var histws = fin.split(",");
 						var clow = histws.length;
+						var plor = clow + 1;
 						alert(fin);
 						if(fin == "") {
 							clow = 0;
 						}
 						if(clow > 0) {
 							document.getElementById("reshist").innerHTML = "";
-							for (i = 1; i < histws.length; i++) {
+							for (i = 1; i < plor; i++) {
 								var tartar = clow - i;
 								document.getElementById("reshist").innerHTML += "<div class='histcloud' id='"+ tartar +"'>" + histws[clow - i] + "<button id='"+i+"' class='dltbtn' onclick='dlt(this)'>削除</button></div><br>";
 							}
