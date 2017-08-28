@@ -824,19 +824,24 @@
 				}
 				function dlthis() {
 					localStorage.historyStackbitAuthData = "";
-					tek();
+					document.getElementById("reshist").innerHTML = '<div><span style="font-weight: lighter; color: #737373;">履歴がありません</span></div>';
+					document.getElementById("dltall").disabled = true;
+					document.getElementById("dltone").disabled = true;
 				}
 				function clrhis() {
 					var fin = localStorage.historyStackbitAuthData;
 					var clow = fin.split(",");
 					clow.shift();
 					var ston = clow.join(",");
+					var statr = clow.length;
 					if(ston.length == 0) {
 						localStorage.historyStackbitAuthData = "";
 					} else {
 						localStorage.historyStackbitAuthData = ston;
 					}
-					tek();
+					for (i = 1; i < clow.length; i++) {
+						document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + clow[statr - i] + "</div><br>";
+					}
 				}
 				function cihou() {
 					document.getElementById("history").style.display = "block";
