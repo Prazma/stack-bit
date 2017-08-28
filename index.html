@@ -922,11 +922,12 @@
 					
 					if(localStorage.timesused) {
 						localStorage.timesused = localStorage.timesused + 1;
+						alert(localStorage.timesused);
 					} else {
 						localStorage.timesused = 1;
 					}
 					
-					if(localStorage.timesused == "5") {
+					if(localStorage.timesused == 2) {
 						document.getElementById("expoly").style.display = "block";
 						document.getElementById("polyhist").style.background = "#404FAD";
 						document.getElementById("polyhist").style.padding = "30px";
