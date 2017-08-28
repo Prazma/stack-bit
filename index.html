@@ -812,13 +812,13 @@
 						}
 					}
 				}
-				function dlthis() {
+				function clrhis() {
 					localStorage.historyStackbitAuthData = "";
 					document.getElementById("reshist").innerHTML = '<div><span style="font-weight: lighter; color: #737373;">履歴がありません</span></div>';
 					document.getElementById("dltall").disabled = true;
 					document.getElementById("dltone").disabled = true;
 				}
-				function clrhis() {
+				function dlthis() {
 					var fin = localStorage.historyStackbitAuthData;
 					var clow = fin.split(",");
 					clow.shift();
@@ -1003,3 +1003,4 @@
 		
 	</body>
 </html>
+
