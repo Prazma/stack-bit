@@ -799,7 +799,7 @@
 						if(clow >= limit) {
 							var statr = clow - limit;
 							histws.splice(0, 1);
-							for (i = 0; i < statr; i++) {
+							for (i = 0; i < statr+1; i++) {
 								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 							}
 							clow = histws.length;
