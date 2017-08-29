@@ -790,7 +790,7 @@
 				function tek() {
 					if (localStorage.historyStackbitAuthData) {
 						var fin = localStorage.historyStackbitAuthData;
-						var histws = fin.split(",");
+						var histws = fin.split(" ");
 						var clow = histws.length;
 						var limit = document.getElementById("savegate").value;
 						document.getElementById("reshist").innerHTML = "";
@@ -874,7 +874,7 @@
 							var fin = str.toString;
 							localStorage.historyStackbitAuthData = fin;
 							document.getElementById("reshist").innerHTML = "";
-							var histws = fin.split(",");
+							var histws = fin.split(" ");
 							var clow = str.length;
 							console.log("function getRate() clow is=> "+clow);
 							console.log("function getRate() limit is=> "+limit);
