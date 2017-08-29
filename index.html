@@ -794,6 +794,8 @@
 						var clow = histws.length;
 						var limit = document.getElementById("savegate").value;
 						document.getElementById("reshist").innerHTML = "";
+						console.log("function tek() => limit is: " + limit);
+						console.log("function tek() => clow is:" + clow);
 						if(str.length >= limit) {
 							str.push(woa+wod+">"+fok+wok);
 							str.splice(0, 1);
@@ -805,11 +807,13 @@
 								for (i = 1; i < 6; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 								}
-							} else if (limit == "10") {
+							}
+							if (limit == "10") {
 								for (i = 1; i < 11; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 								}
-							} else if (limit == "15") {
+							}
+							if (limit == "15") {
 								for (i = 1; i < 16; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 								}
@@ -859,34 +863,33 @@
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
 							var str = localStorage.historyStackbitAuthData.split(" ");
-							if(str.length >= limit) {
-								str.push(woa+wod+">"+fok+wok);
-								str.splice(0, 1);
-							} else {
-								str.push(woa+wod+">"+fok+wok);
-							}
+							str.push(woa+wod+">"+fok+wok);
 							var fin = str.toString;
 							localStorage.historyStackbitAuthData = fin;
 							document.getElementById("reshist").innerHTML = "";
 							var histws = fin.split(",");
-							var clow = histws.length;
+							var clow = str.length;
+							console.log("function getRate() clow is=> "+clow);
+							console.log("function getRate() limit is=> "+limit);
 							if(clow >= 5) {
 								if(limit == "5") {
 									for (i = 1; i < 6; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + str[clow - i] + "</div><br>";
 									}
-								} else if (limit == "10") {
+								}
+								if (limit == "10") {
 									for (i = 1; i < 11; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + str[clow - i] + "</div><br>";
 									}
-								} else if (limit == "15") {
+								}
+								if (limit == "15") {
 									for (i = 1; i < 16; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + str[clow - i] + "</div><br>";
 									}
 								}
 							} else {
 								for (i = 1; i < clow+1; i++) {
-									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + str[clow - i] + "</div><br>";
 								}
 							}
 						} else {
