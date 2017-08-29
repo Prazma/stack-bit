@@ -802,26 +802,32 @@
 							for (i = 0; i < statr; i++) {
 								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 							}
-						}
-						if(clow >= 5) {
+							clow = histws.length;
+							console.log("2nd log, function tek() => clow is:" + clow);
+						} else {
 							if(limit == "5") {
 								for (i = 1; i < 6; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+									console.log("caught tek() limit == 5. returning "+ i);
 								}
 							}
 							if (limit == "10") {
 								for (i = 1; i < 11; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+									console.log("caught tek() limit == 10. returning "+ i);
 								}
 							}
 							if (limit == "15") {
 								for (i = 1; i < 16; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+									console.log("caught tek() limit == 15. returning "+ i);
 								}
 							}
-						} else {
+						}
+						if(clow <= limit) {
 							for (i = 1; i < clow+1; i++) {
 								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+								console.log("caught tek() limit under. returning " + i + ". while clow is "+clow);
 							}
 						}
 					}
