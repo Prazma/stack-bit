@@ -400,7 +400,7 @@
 					<div>
 						<br>
 						<input type="tel" id="curnet" class="crcy" value="0" onblur="chkbck()" onchange="chk()" onfocus="ock()" style="width: 54.5%; padding: 13px 10px;">
-						<select class="crcy" id="frscrcy" data-toggle="tooltip" title="クリックして通貨を変えることができます" style="padding: 13px 10px;">
+						<select class="crcy" id="frscrcy" onchange="updonecur()" data-toggle="tooltip" title="クリックして通貨を変えることができます" style="padding: 13px 10px;">
 							<option value="---" disabled>最近使った通貨</option>
 							<div id="saikin">
 								<option value="USD">USD ($)</option>
@@ -790,44 +790,27 @@
 				function tek() {
 					if (localStorage.historyStackbitAuthData) {
 						var fin = localStorage.historyStackbitAuthData;
-						var histws = fin.split(" ");
+						var histws = fin.split(",");
 						var clow = histws.length;
 						var limit = document.getElementById("savegate").value;
 						document.getElementById("reshist").innerHTML = "";
-						console.log("function tek() => limit is: " + limit);
-						console.log("function tek() => clow is:" + clow);
-						if(clow >= limit) {
-							var statr = clow - limit;
-							histws.splice(0, 1);
-							for (i = 0; i < statr+1; i++) {
-								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-							}
-							clow = histws.length;
-							console.log("2nd log, function tek() => clow is:" + clow);
-						} else {
+						if(clow >= 5) {
 							if(limit == "5") {
 								for (i = 1; i < 6; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-									console.log("caught tek() limit == 5. returning "+ i);
 								}
-							}
-							if (limit == "10") {
+							} else if (limit == "10") {
 								for (i = 1; i < 11; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-									console.log("caught tek() limit == 10. returning "+ i);
 								}
-							}
-							if (limit == "15") {
+							} else if (limit == "15") {
 								for (i = 1; i < 16; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-									console.log("caught tek() limit == 15. returning "+ i);
 								}
 							}
-						}
-						if(clow <= limit) {
+						} else {
 							for (i = 1; i < clow+1; i++) {
 								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-								console.log("caught tek() limit under. returning " + i + ". while clow is "+clow);
 							}
 						}
 					}
@@ -849,12 +832,15 @@
 				function dshmdn() {
 					location.replace("https://stackmemo-tomocode.c9users.io");
 				}
+				function updonecur() {
+					chk();
+				}
 				function updtwocur() {
 					document.getElementById("disext").innerHTML = document.getElementById("seccrcy").value;
+					chk();
 				}
 				function getRate(first, second) {
 					var demo = function(data) {
-						var limit = document.getElementById("savegate").value + 1;
 						fx.rates = data.rates
 						var rate = fx(1).from(first).to(second)
 						var fort = document.getElementById("curnet").value;
@@ -866,33 +852,30 @@
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
 							var str = localStorage.historyStackbitAuthData.split(" ");
-							str.push(woa+wod+">"+fok+wok);
-							var fin = str.toString;
+							str.push(woa+wod+">"+fok+wok)
+							var fin = str.join(",");
 							localStorage.historyStackbitAuthData = fin;
 							document.getElementById("reshist").innerHTML = "";
-							var histws = fin.split(" ");
-							var clow = str.length;
-							console.log("function getRate() clow is=> "+clow);
-							console.log("function getRate() limit is=> "+limit);
+							var histws = fin.split(",");
+							var clow = histws.length;
+							var limit = document.getElementById("savegate").value + 1;
 							if(clow >= 5) {
 								if(limit == "5") {
 									for (i = 1; i < 6; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + str[clow - i] + "</div><br>";
+										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 									}
-								}
-								if (limit == "10") {
+								} else if (limit == "10") {
 									for (i = 1; i < 11; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + str[clow - i] + "</div><br>";
+										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 									}
-								}
-								if (limit == "15") {
+								} else if (limit == "15") {
 									for (i = 1; i < 16; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + str[clow - i] + "</div><br>";
+										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 									}
 								}
 							} else {
 								for (i = 1; i < clow+1; i++) {
-									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + str[clow - i] + "</div><br>";
+									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 								}
 							}
 						} else {
