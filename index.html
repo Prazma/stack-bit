@@ -798,10 +798,17 @@
 							if(limit == "5") {
 								var fin = localStorage.historyStackbitAuthData;
 								var histws = fin.split(" ");
-								for (i = 1; i < 6; i++) {
-									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-									console.log(clow-i);
-								}
+								var tekta;
+								tekta = clow - 1;
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[tekta] + "</div><br>";
+								tekta = clow - 2;
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[tekta] + "</div><br>";
+								tekta = clow - 3;
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[tekta] + "</div><br>";
+								tekta = clow - 4;
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[tekta] + "</div><br>";
+								tekta = clow - 5;
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[tekta] + "</div><br>";
 							}
 							if (limit == "10") {
 								var fin = localStorage.historyStackbitAuthData;
