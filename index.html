@@ -854,6 +854,8 @@
 							var str = localStorage.historyStackbitAuthData.split(" ");
 							str.push(woa+wod+"から"+fok+wok);
 							var fin = str.join(" ");
+							console.log(str);
+							console.log(fin);
 							localStorage.historyStackbitAuthData = fin;
 							setTimeout( function () {
 								tek();
