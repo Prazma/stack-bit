@@ -8,21 +8,8 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="white">
 		<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Prazma/stackbit/master/img/stackiconBeta.png">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://raw.githubusercontent.com/Prazma/stackbit/master/js/ripple.js"></script>
 		<script src="js/money.js"></script>
-		<script>
-			var config = {
-				apiKey: "AIzaSyDCe0UhsuGWl3Kkg-es2ytFUmuvCo6ngzA",
-			    authDomain: "loghorizon-8068c.firebaseapp.com",
-			    databaseURL: "https://loghorizon-8068c.firebaseio.com",
-			    projectId: "loghorizon-8068c",
-			    storageBucket: "loghorizon-8068c.appspot.com",
-				messagingSenderId: "63675947318"
-			};
-			firebase.initializeApp(config);
-		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
@@ -807,8 +794,9 @@
 						var fin = localStorage.historyStackbitAuthData;
 						var histws = fin.split(",");
 						var clow = histws.length;
+						var limit = document.getElementById("savegate").value + 1;
 						document.getElementById("reshist").innerHTML = "";
-						for (i = 1; i < histws.length; i++) {
+						for (i = 0; i < limit; i++) {
 							document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 						}
 					}
@@ -856,7 +844,7 @@
 							document.getElementById("reshist").innerHTML = "";
 							var histws = fin.split(",");
 							var clow = histws.length;
-							var limit = document.getElementById("savegate").value;
+							var limit = document.getElementById("savegate").value + 1;
 							for (i = 0; i < limit; i++) {
 								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 							}
@@ -920,6 +908,14 @@
 				}
 				function clrhist() {
 					localStorage.clear();
+					setTimeout( function () {
+						document.getElementById("statr").innerHTML = "削除できました！";
+						document.getElementById("clsbtnclshs").disabled = false;
+						navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+						if (navigator.vibrate) {
+							navigator.vibrate([400, 200, 400]);
+						}
+					}, 10000)
 					tek();
 				}
 				function chkbck() {
@@ -928,7 +924,10 @@
 						document.getElementById("curnet").value = "0";
 					}
 				}
-				'<button class="histbtn"></button>'
+				function clsstatr() {
+					document.getElementById("statr").innerHTML = "履歴を削除しています";
+					document.getElementById("clsbtnclshs").disabled = true;
+				}
 			</script>
 			<script>
 				$('#frscrcy').tooltip({trigger: 'manual'});
@@ -967,11 +966,25 @@
 					<span style="font-weight: lighter; font-size: 13px;">*以前にセーブされていない履歴は表示されません</span>
 				</div>
 				<div style="margin-top: 10px;">
-					<button class="platbtn" style="width: 96.5%; background: #F15249; color: #ffffff; border-color: #F15249;" onclick="clrhist()">履歴をすべて消す</button>
+					<button class="platbtn" style="width: 96.5%; background: #F15249; color: #ffffff; border-color: #F15249;" onclick="clrhist()" data-toggle="modal" data-target="#myModal">履歴をすべて消す</button>
 				</div>
 			</div>
 			<div id="sonjay">
 				<button class="roundbtn" onclick="clsset()" style="padding: 10px 10px 10px 10px; background: #F15249; border-color: #F15249;"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTUwNS45NDMsNi4wNThjLTguMDc3LTguMDc3LTIxLjE3Mi04LjA3Ny0yOS4yNDksMEw2LjA1OCw0NzYuNjkzYy04LjA3Nyw4LjA3Ny04LjA3NywyMS4xNzIsMCwyOS4yNDkgICAgQzEwLjA5Niw1MDkuOTgyLDE1LjM5LDUxMiwyMC42ODMsNTEyYzUuMjkzLDAsMTAuNTg2LTIuMDE5LDE0LjYyNS02LjA1OUw1MDUuOTQzLDM1LjMwNiAgICBDNTE0LjAxOSwyNy4yMyw1MTQuMDE5LDE0LjEzNSw1MDUuOTQzLDYuMDU4eiIgZmlsbD0iI0ZGRkZGRiIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTUwNS45NDIsNDc2LjY5NEwzNS4zMDYsNi4wNTljLTguMDc2LTguMDc3LTIxLjE3Mi04LjA3Ny0yOS4yNDgsMGMtOC4wNzcsOC4wNzYtOC4wNzcsMjEuMTcxLDAsMjkuMjQ4bDQ3MC42MzYsNDcwLjYzNiAgICBjNC4wMzgsNC4wMzksOS4zMzIsNi4wNTgsMTQuNjI1LDYuMDU4YzUuMjkzLDAsMTAuNTg3LTIuMDE5LDE0LjYyNC02LjA1N0M1MTQuMDE4LDQ5Ny44NjYsNTE0LjAxOCw0ODQuNzcxLDUwNS45NDIsNDc2LjY5NHoiIGZpbGw9IiNGRkZGRkYiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" height="30px" width="30px"/></button>
+			</div>
+		</div>
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-body" id="dltconthst" style="text-align: center;">
+						<img src="https://raw.githubusercontent.com/Prazma/stackbit/master/img/loadbit.gif" height="50px">
+						<h4 id="statr">履歴を削除しています</h4>
+					</div>
+					<div class="modal-footer">
+						<button id="clsbtnclshs" onclick="clsstatr()" type="button" class="btn btn-default" data-dismiss="modal" disabled>閉じる</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
