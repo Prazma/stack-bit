@@ -794,6 +794,12 @@
 						var clow = histws.length;
 						var limit = document.getElementById("savegate").value;
 						document.getElementById("reshist").innerHTML = "";
+						if(str.length >= limit) {
+							str.push(woa+wod+">"+fok+wok);
+							str.splice(0, 1);
+						} else {
+							str.push(woa+wod+">"+fok+wok);
+						}
 						if(clow >= 5) {
 							if(limit == "5") {
 								for (i = 1; i < 6; i++) {
@@ -841,6 +847,7 @@
 				}
 				function getRate(first, second) {
 					var demo = function(data) {
+						var limit = document.getElementById("savegate").value + 1;
 						fx.rates = data.rates
 						var rate = fx(1).from(first).to(second)
 						var fort = document.getElementById("curnet").value;
@@ -852,13 +859,17 @@
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
 							var str = localStorage.historyStackbitAuthData.split(" ");
-							str.push(woa+wod+">"+fok+wok)
-							var fin = str.join(",");
+							if(str.length >= limit) {
+								str.push(woa+wod+">"+fok+wok);
+								str.splice(0, 1);
+							} else {
+								str.push(woa+wod+">"+fok+wok);
+							}
+							var fin = str.toString;
 							localStorage.historyStackbitAuthData = fin;
 							document.getElementById("reshist").innerHTML = "";
 							var histws = fin.split(",");
 							var clow = histws.length;
-							var limit = document.getElementById("savegate").value + 1;
 							if(clow >= 5) {
 								if(limit == "5") {
 									for (i = 1; i < 6; i++) {
