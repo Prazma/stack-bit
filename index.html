@@ -790,7 +790,7 @@
 				function tek() {
 					if (localStorage.historyStackbitAuthData) {
 						var fin = localStorage.historyStackbitAuthData;
-						var histws = fin.split(",");
+						var histws = fin.split(" ");
 						var clow = histws.length;
 						var limit = document.getElementById("savegate").value;
 						document.getElementById("reshist").innerHTML = "";
@@ -809,7 +809,7 @@
 								}
 							}
 						} else {
-							for (i = 1; i < clow+1; i++) {
+							for (i = 1; i < limit+1; i++) {
 								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
 							}
 						}
@@ -852,39 +852,19 @@
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
 							var str = localStorage.historyStackbitAuthData.split(" ");
-							str.push(woa+wod+">"+fok+wok)
-							var fin = str.join(",");
+							str.push(woa+wod+"から"+fok+wok);
+							var fin = str.join(" ");
 							localStorage.historyStackbitAuthData = fin;
-							document.getElementById("reshist").innerHTML = "";
-							var histws = fin.split(",");
-							var clow = histws.length;
-							var limit = document.getElementById("savegate").value + 1;
-							if(clow >= 5) {
-								if(limit == "5") {
-									for (i = 1; i < 6; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-									}
-								} else if (limit == "10") {
-									for (i = 1; i < 11; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-									}
-								} else if (limit == "15") {
-									for (i = 1; i < 16; i++) {
-										document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-									}
-								}
-							} else {
-								for (i = 1; i < clow+1; i++) {
-									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
-								}
-							}
+							setTimeout( function () {
+								tek();
+							}, 500)
 						} else {
 							var woa = document.getElementById("curnet").value;
 							var wod = document.getElementById("frscrcy").value;
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
 							var hist = [];
-							hist.push(woa+wod+"から"+fok+wok)
+							hist.push(woa+wod+"から"+fok+wok);
 							var stats = hist.join();
 							localStorage.historyStackbitAuthData = stats;
 							document.getElementById("reshist").innerHTML = "";
