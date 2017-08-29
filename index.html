@@ -797,10 +797,11 @@
 						console.log("function tek() => limit is: " + limit);
 						console.log("function tek() => clow is:" + clow);
 						if(clow >= limit) {
-							histws.push(woa+wod+">"+fok+wok);
+							var statr = clow - limit;
 							histws.splice(0, 1);
-						} else {
-							histws.push(woa+wod+">"+fok+wok);
+							for (i = 0; i < statr; i++) {
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+							}
 						}
 						if(clow >= 5) {
 							if(limit == "5") {
