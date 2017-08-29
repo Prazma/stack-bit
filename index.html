@@ -796,16 +796,27 @@
 						document.getElementById("reshist").innerHTML = "";
 						if(clow >= 5) {
 							if(limit == "5") {
+								var fin = localStorage.historyStackbitAuthData;
+								var histws = fin.split(" ");
 								for (i = 1; i < 6; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+									console.log(clow-i);
 								}
-							} else if (limit == "10") {
+							}
+							if (limit == "10") {
+								var fin = localStorage.historyStackbitAuthData;
+								var histws = fin.split(" ");
 								for (i = 1; i < 11; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+									console.log(clow-i);
 								}
-							} else if (limit == "15") {
+							}
+							if (limit == "15") {
+								var fin = localStorage.historyStackbitAuthData;
+								var histws = fin.split(" ");
 								for (i = 1; i < 16; i++) {
 									document.getElementById("reshist").innerHTML += "<div class='histcloud'>" + histws[clow - i] + "</div><br>";
+									console.log(clow-i);
 								}
 							}
 						} else {
