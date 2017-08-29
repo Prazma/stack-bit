@@ -403,8 +403,8 @@
 						<select class="crcy" id="frscrcy" onchange="updonecur()" data-toggle="tooltip" title="クリックして通貨を変えることができます" style="padding: 13px 10px;">
 							<option value="---" disabled>最近使った通貨</option>
 							<div id="saikin">
-								<option value="JPY">JPY (¥)</option>
 								<option value="USD">USD ($)</option>
+								<option value="JPY">JPY (¥)</option>
 							</div>
 							<option value="---" disabled>-人気の通貨-</option>
 							<option value="USD">USD ($)</option>
@@ -792,6 +792,7 @@
 						var fin = localStorage.historyStackbitAuthData;
 						var histws = fin.split(",");
 						var clow = histws.length;
+						alert(clow);
 						var limit = document.getElementById("savegate").value;
 						document.getElementById("reshist").innerHTML = "";
 						if(clow >= 5) {
