@@ -796,11 +796,11 @@
 						document.getElementById("reshist").innerHTML = "";
 						console.log("function tek() => limit is: " + limit);
 						console.log("function tek() => clow is:" + clow);
-						if(str.length >= limit) {
-							str.push(woa+wod+">"+fok+wok);
-							str.splice(0, 1);
+						if(clow >= limit) {
+							histws.push(woa+wod+">"+fok+wok);
+							histws.splice(0, 1);
 						} else {
-							str.push(woa+wod+">"+fok+wok);
+							histws.push(woa+wod+">"+fok+wok);
 						}
 						if(clow >= 5) {
 							if(limit == "5") {
