@@ -1,4 +1,4 @@
-function tek() {
+				function tek() {
 					if (localStorage.historyStackbitAuthData) {
 						var fin = localStorage.historyStackbitAuthData;
 						var histws = fin.split(" ");
@@ -146,7 +146,7 @@ function tek() {
 							document.getElementById("reshist").innerHTML = "<div class='histcloud'>"+stats+"</div><br>";
 						}
 					}
-					$.getJSON("https://api.fixer.io/latest", demo)
+					$.getJSON("dat/latest", demo)
 					
 				}
 				function chk() {
