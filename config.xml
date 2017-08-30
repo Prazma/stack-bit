@@ -16,5 +16,7 @@
     <author href="https://prazma.github.io" email="tomoyoshi.usa@gmail.com">
         Tomoyoshi Yamamoto
     </author>
-
+	<icon src="img/stackiconBeta.png" width="72" height="72" />
+	<icon src="img/stackiconBeta.png" width="48" height="48" />
+	<icon src="img/stackiconBeta.png" width="36" height="36" />
 </widget>
