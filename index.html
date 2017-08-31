@@ -821,25 +821,8 @@
 							spli = clow - i - 1;
 							document.getElementById("reshist").innerHTML += "<div class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' style='width: 90%; margin-top: 10px;' id='"+spli+"'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='"+spli+"' onclick='dlt(this)' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
 						}
-						var cur = document.getElementById("goukeitani").value;
-						var tot = 0;
-						for(i = 0; i < clow; i++) {
-							spli = clow - i - 1;
-							var fil = sub[spli];
-							var sil = car[spli];
-							console.log(fil);
-							console.log(sil);
-							var calc = function(data) {
-								fx.rates = data.rates
-								var rate = fx(1).from(sil).to(cur);
-								var fort = sil;
-								tot = tot + (rate.toFixed(2)*fort);
-								console.log(tot);
-							}
-							$.getJSON('dat/latest', calc);
-						}
-						document.getElementById("goukei").innerHTML = tot;
 					}
+					gou();
 				}
 				function cihou() {
 					document.getElementById("history").style.display = "block";
@@ -862,10 +845,21 @@
 					document.getElementById("disext").innerHTML = document.getElementById("seccrcy").value;
 					chk();
 				}
+				function gou() {
+					if(localStorage.goAuth) {
+						var sin = localStorage.goAuth;
+						var data = 'dat/latest';
+						var tan = document.getElementById("goukeitani").value;
+						fx.rates = data.rates;
+						var rate = fx(1).from("JPY").to(tan);
+						var tin = sin * rate;
+						document.getElementById("goukei").innerHTML = tin;
+					}
+				}
 				function getRate(first, second) {
 					var demo = function(data) {
-						fx.rates = data.rates
-						var rate = fx(1).from(first).to(second)
+						fx.rates = data.rates;
+						var rate = fx(1).from(first).to(second);
 						var fort = document.getElementById("curnet").value;
 						document.getElementById("dispan").innerHTML = (rate.toFixed(2)*fort);
 						if (localStorage.historyStackbitAuthDatas) {
@@ -883,6 +877,22 @@
 							str.push(fok+wok);
 							sub.push(fok);
 							car.push(wok);
+							fx.rates = data.rates;
+							var rate = fx(1).from(wok).to("JPY");
+							var tele = fort;
+							if(localStorage.goAuth) {
+								var mat = localStorage.goAuth;
+								var til = (rate.toFixed(2)*tele);
+								localStorage.goAuth = mat + til;
+							} else {
+								var til = (rate.toFixed(2)*tele);
+								localStorage.goAuth = til;
+							}
+							var deli = localStorage.goAuth;
+							var cildi = document.getElementById("goukeitani").value;
+							var kindel = fx(1).from("JPY").to(cildi)
+							var fellila = localStorage.goAuth;
+							document.getElementById("goukei").innerHTML = fellila * kindel;
 							var fin = str.join(",");
 							var subfer = sub.join(",");
 							var carfer = car.join(",");
@@ -893,6 +903,7 @@
 							localStorage.carferAuth = carfer;
 							setTimeout( function () {
 								tek();
+								gou();
 							}, 500)
 						} else {
 							var woa = document.getElementById("curnet").value;
@@ -904,6 +915,14 @@
 							var cars = [];
 							hist.push(fok+wok);
 							subs.push(fok);
+							var rate = fx(1).from(wok).to("JPY");
+							var til = (rate.toFixed(2)*tele);
+							localStorage.goAuth = til;
+							var mendes = localStorage.goAuth;
+							var sin = document.getElementById("goukeitani").value;
+							var tekcs = fx(1).from("JPY").to(sin);
+							var swm = mendes * tekcs;
+							document.getElementById("goukei").innerHTML = swm;
 							cars.push(wok);
 							var stats = hist.join();
 							var subfer = subs.join();
