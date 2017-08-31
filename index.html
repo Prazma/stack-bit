@@ -870,15 +870,18 @@
 							var wod = document.getElementById("frscrcy").value;
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
-							var str = localStorage.historyStackbitAuthDatas.split(",");
-							var sub = localStorage.subferAuth.split(",");
-							var car = localStorage.carferAuth.split(",");
+							var sty = localStorage.historyStackbitAuthDatas;
+							var str = sty.split(",");
+							var dub = localStorage.subferAuth;
+							var sub = dub.split(",");
+							var par = localStorage.carferAuth
+							var car = par.split(",");
 							str.push(fok+wok);
 							sub.push(fok);
 							car.push(wok);
-							var fin = str.join(" ");
-							var subfer = sub.join(" ");
-							var carfer = car.join(" ");
+							var fin = str.join(",");
+							var subfer = sub.join(",");
+							var carfer = car.join(",");
 							console.log(str);
 							console.log(fin);
 							localStorage.historyStackbitAuthDatas = fin;
