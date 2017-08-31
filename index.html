@@ -819,9 +819,13 @@
 						var car = tel.split(",");
 						var clow = his.length;
 						var spli;
-						for (i = 0; i < clow; i++) {
-							spli = clow - i - 1;
-							document.getElementById("reshist").innerHTML += "<div class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' style='width: 90%; margin-top: 10px;' id='"+spli+"'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='"+spli+"' onclick='dlt(this)' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
+						if(clow == 1) {
+							document.getElementById("reshist").innerHTML += "<div class='histcloud'><span>" + his[1] + "</span><br><select class='crcy' style='width: 90%; margin-top: 10px;' id='1'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='1' onclick='dlt(this)' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
+						} else {
+							for (i = 0; i < clow; i++) {
+								spli = clow - i - 1;
+								document.getElementById("reshist").innerHTML += "<div class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' style='width: 90%; margin-top: 10px;' id='"+spli+"'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='"+spli+"' onclick='dlt(this)' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
+							}
 						}
 					}
 					gou();
@@ -909,7 +913,6 @@
 							var hist = [];
 							var subs = [];
 							var cars = [];
-							hist.push("0"+"JPY");
 							hist.push(fok+wok);
 							subs.push(fok);
 							var rate = fx(1).from(wok).to("JPY");
