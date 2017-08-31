@@ -807,7 +807,7 @@
 			</div>
 			<script type="text/javascript">
 				function tek() {
-					if (localStorage.historyStackbitAuthData) {
+					if (localStorage.historyStackbitAuthDatas) {
 						var fel = localStorage.historyStackbitAuthData;
 						var his = fel.split(" ");
 						var pel = localStorage.subferAuth;
@@ -864,13 +864,13 @@
 						var rate = fx(1).from(first).to(second)
 						var fort = document.getElementById("curnet").value;
 						document.getElementById("dispan").innerHTML = (rate.toFixed(2)*fort);
-						if (localStorage.historyStackbitAuthData) {
+						if (localStorage.historyStackbitAuthDatas) {
 							document.getElementById("reshist").innerHTML = "";
 							var woa = document.getElementById("curnet").value;
 							var wod = document.getElementById("frscrcy").value;
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
-							var str = localStorage.historyStackbitAuthData.split(" ");
+							var str = localStorage.historyStackbitAuthDatas.split(" ");
 							var sub = localStorage.subferAuth.split(" ");
 							var car = localStorage.carferAuth.split(" ");
 							str.push(fok+wok);
@@ -881,7 +881,7 @@
 							var carfer = car.join(" ");
 							console.log(str);
 							console.log(fin);
-							localStorage.historyStackbitAuthData = fin;
+							localStorage.historyStackbitAuthDatas = fin;
 							localStorage.subferAuth = subfer;
 							localStorage.carferAuth = carfer;
 							setTimeout( function () {
@@ -901,7 +901,7 @@
 							var stats = hist.join();
 							var subfer = subs.join();
 							var carfer = subs.join();
-							localStorage.historyStackbitAuthData = stats;
+							localStorage.historyStackbitAuthDatas = stats;
 							localStorage.subferAuth = subfer;
 							localStorage.carferAuth = carfer;
 							document.getElementById("reshist").innerHTML = "";
@@ -1251,5 +1251,3 @@
 		</script>
 	</body>
 </html>
-
-
