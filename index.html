@@ -809,11 +809,11 @@
 				function tek() {
 					if (localStorage.historyStackbitAuthDatas) {
 						var fel = localStorage.historyStackbitAuthData;
-						var his = fel.split(" ");
+						var his = fel.split(",");
 						var pel = localStorage.subferAuth;
 						var tel = localStorage.carferAuth;
-						var sub = pel.split(" ");
-						var car = tel.split(" ");
+						var sub = pel.split(",");
+						var car = tel.split(",");
 						var clow = his.length();
 						var spli;
 						for (i = 0; i < clow; i++) {
@@ -870,9 +870,9 @@
 							var wod = document.getElementById("frscrcy").value;
 							var wok = document.getElementById("seccrcy").value;
 							var fok = document.getElementById("dispan").innerHTML;
-							var str = localStorage.historyStackbitAuthDatas.split(" ");
-							var sub = localStorage.subferAuth.split(" ");
-							var car = localStorage.carferAuth.split(" ");
+							var str = localStorage.historyStackbitAuthDatas.split(",");
+							var sub = localStorage.subferAuth.split(",");
+							var car = localStorage.carferAuth.split(",");
 							str.push(fok+wok);
 							sub.push(fok);
 							car.push(wok);
@@ -1212,7 +1212,7 @@
 							<option value="ZWL">ZWL</option>
 						</select>
 			</div>
-			<div id="reshist" class="histcloud" style="background: #ffffff; margin-top: 60px; text-align: center; margin-bottom: 10px;">
+			<div id="reshist" class="histcloud" style="background: #ffffff; margin-top: 110px; text-align: center; margin-bottom: 10px;">
 				<div class="histcloud">
 					<span style="font-weight: lighter; color: #737373;">履歴がありません</span>
 				</div>
