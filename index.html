@@ -808,7 +808,8 @@
 			<script type="text/javascript">
 				function tek() {
 					if (localStorage.historyStackbitAuthData) {
-						var his = localStorage.historyStackbitAuthData.split(" ");
+						var fel = localStorage.historyStackbitAuthData;
+						var his = fel.split(" ");
 						var pel = localStorage.subferAuth;
 						var tel = localStorage.carferAuth;
 						var sub = pel.split(" ");
@@ -825,10 +826,10 @@
 							spli = clow - i - 1;
 							var fil = sub[spli];
 							var sil = car[spli];
-							$.getJSON('dat/latest', calc)
+							$.getJSON('dat/latest', calc);
 							var calc = function(data) {
 								fx.rates = data.rates
-								var rate = fx(1).from(sil).to(cur)
+								var rate = fx(1).from(sil).to(cur);
 								var fort = sil;
 								tot = tot + (rate.toFixed(2)*fort);
 							}
@@ -1250,3 +1251,5 @@
 		</script>
 	</body>
 </html>
+
+
