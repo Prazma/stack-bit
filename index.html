@@ -808,6 +808,7 @@
 			<script type="text/javascript">
 				function tek() {
 					if (localStorage.historyStackbitAuthDatas) {
+						document.getElementById("reshist").innerHTML = "";
 						var fel = localStorage.historyStackbitAuthDatas;
 						var his = fel.split(",");
 						console.log(his);
