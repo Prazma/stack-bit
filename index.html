@@ -218,16 +218,16 @@
 				margin-top: 20px;
 			}
 			::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-                color: #ffffff;
+                color: #737373;
             }
             ::-moz-placeholder { /* Firefox 19+ */
-                color: #ffffff;
+                color: #737373;
             }
             :-ms-input-placeholder { /* IE 10+ */
-                color: #ffffff;
+                color: #737373;
             }
             :-moz-placeholder { /* Firefox 18- */
-                color: #ffffff;
+                color: #737373;
             }
             #dsh {
                 position: fixed;
@@ -417,6 +417,16 @@
 				border-radius: 6px;
 				padding: 8px;
 				color: #ffffff;
+			}
+			#dillet {
+				background: #F96B00;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to right, #F96B00, #F9607D);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to right, #F96B00, #F9607D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				background: #F96B00, #F9607D;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				height: 100vh;
 			}
 		</style>
 	</head>
@@ -1005,6 +1015,9 @@
 						document.getElementById("settinglau").disabled = false;
 					}, 500);
 				}
+				function filox() {
+					document.getElementById("dillet").style.display = "none";
+				}
 				function clrhist() {
 					localStorage.clear();
 					setTimeout( function () {
@@ -1064,7 +1077,7 @@
 		<div id="history" style="display: none; opacity: 0;">
 			<div id="navi">おこづかい帳</div>
 			<div class="subs">
-				合計：<span id="goukei">2172</span>
+				合計：<span id="goukei">12172</span>
 				<select class="crcy" id="seccrcy" style="width: 30%" style="padding: 13px 10px;">
 							<option value="JPY">JPY (¥)</option>
 							<option value="---" disabled>-人気の通貨-</option>
@@ -1281,5 +1294,12 @@
 		<script type="text/javascript">
 			Waves.attach('.roundbtn', ['waves-button']);
 		</script>
+		<div id="dillet" style="text-align: center; background: #f1f1f1;">
+		<div class="histcloud" style="margin-top: 30px;"><br>
+			<span style="color: #000000; font-size: 30px;">お小遣い金額を<br>入力してください</span><br><br>
+			<input class="crcy" style="width: 90%" placeholder="単位は円です"><br><br>
+			<button onclick="filox()" style="color: #ffffff; padding: 10px; font-weight: bold; font-size: 20px; width: 90%; background: #2269B7; border: 1px solid #2269B7; border-radius: 6px;">決定</button><br><br>
+		</div>
+		</div>
 	</body>
 </html>
