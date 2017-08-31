@@ -819,7 +819,7 @@
 						var spli;
 						for (i = 0; i < clow; i++) {
 							spli = clow - i - 1;
-							document.getElementById("reshist").innerHTML += "<div class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' style='width: 90%' id='"+spli+"'></select><br><button id='"+spli+"' onclick='dlt(this)' class='dltbtn' style='width: 90%'>削除</button></div><br>";
+							document.getElementById("reshist").innerHTML += "<div class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' style='width: 90%; margin-top: 10px;' id='"+spli+"'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='"+spli+"' onclick='dlt(this)' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
 						}
 						var cur = document.getElementById("goukeitani").value;
 						var tot = 0;
@@ -827,13 +827,13 @@
 							spli = clow - i - 1;
 							var fil = sub[spli];
 							var sil = car[spli];
-							$.getJSON('dat/latest', calc);
 							var calc = function(data) {
 								fx.rates = data.rates
 								var rate = fx(1).from(sil).to(cur);
 								var fort = sil;
 								tot = tot + (rate.toFixed(2)*fort);
 							}
+							$.getJSON('dat/latest', calc);
 						}
 						document.getElementById("goukei").innerHTML = tot;
 					}
@@ -1255,5 +1255,3 @@
 		</script>
 	</body>
 </html>
-
-
