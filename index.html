@@ -804,6 +804,7 @@
 			<div style="display: none">
 				<span id="firstvalue"></span>
 				<span id="secondvalue"></span>
+				<span id="phiilos"></span>
 			</div>
 			<script type="text/javascript">
 				function tek() {
@@ -849,8 +850,10 @@
 				function gou() {
 					if(localStorage.goAuth) {
 						var sin = localStorage.goAuth;
-						console.log(sin);
-						document.getElementById("goukei").innerHTML = sin;
+						document.getElementById("phiilos").innerHTML = sin;
+						var cardinal = document.getElementById("phiilos").innerHTML;
+						console.log(cardinal);
+						document.getElementById("goukei").innerHTML = cardinal;
 					}
 				}
 				function getRate(first, second) {
@@ -876,7 +879,7 @@
 							car.push(wok);
 							fx.rates = data.rates;
 							var rate = fx(1).from(wok).to("JPY");
-							var tele = fort;
+							var tele = document.getElementById("dispan").innerHTML;
 							if(localStorage.goAuth) {
 								var mat = localStorage.goAuth;
 								var til = (rate.toFixed(2)*tele);
