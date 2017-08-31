@@ -827,11 +827,14 @@
 							spli = clow - i - 1;
 							var fil = sub[spli];
 							var sil = car[spli];
+							console.log(fil);
+							console.log(sil);
 							var calc = function(data) {
 								fx.rates = data.rates
 								var rate = fx(1).from(sil).to(cur);
 								var fort = sil;
 								tot = tot + (rate.toFixed(2)*fort);
+								console.log(tot);
 							}
 							$.getJSON('dat/latest', calc);
 						}
@@ -1038,7 +1041,7 @@
 			<div id="navi">おこづかい帳</div>
 			<div class="subs">
 				合計：<span id="goukei">0</span>
-				<select class="crcy" id="goukeitani" onchange="updtwocur()" style="padding: 5px 5px; width: 30%;">
+				<select class="crcy" id="goukeitani" onchange="updgoukei()" style="padding: 5px 5px; width: 30%;">
 							<option value="---" disabled>-人気の通貨-</option>
 							<option value="JPY">JPY (¥)</option>
 							<option value="USD">USD ($)</option>
