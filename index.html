@@ -1032,6 +1032,21 @@
 					document.getElementById("zanstar").value = localStorage.mimoney;
 					document.getElementById("dillet").style.display = "none";
 				}
+				function filex() {
+					localStorage.mimoney = document.getElementById("strtmimoney").value;
+					var monex = localStorage.mimoney;
+					var hai = [monex + "JPY"];
+					var otis = hai.join(",");
+					localStorage.historyStackbitAuthDatas = otis;
+					document.getElementById("dillet").innerHTML = "<span class'redit'>StackHubへようこそ！</span>";
+					setTimeout( function () {
+						document.getElementById("dillet").style.opacity = "0";
+					}, 200);
+					setTimeout( function () {
+						filox();
+						tek();
+					}, 400);
+				}
 				function clrhist() {
 					document.getElementById("confirmio").style.display = "none";
 					document.getElementById("donio").style.display = "block";
@@ -1323,8 +1338,8 @@
 		<div id="dillet" style="text-align: center; background: #f1f1f1;">
 			<div id="sindia" class="histcloud" style="margin-top: 30px;"><br>
 				<span style="color: #000000; font-size: 30px;">お小遣い金額を<br>入力してください</span><br><br>
-				<input class="crcy" type="tel" style="width: 90%" placeholder="単位は円です"><br><br>
-				<button onclick="filox()" style="color: #ffffff; padding: 10px; font-weight: bold; font-size: 20px; width: 90%; background: #2269B7; border: 1px solid #2269B7; border-radius: 6px;">決定</button><br><br>
+				<input id="strtmimoney" class="crcy" type="tel" style="width: 90%" placeholder="単位は円です"><br><br>
+				<button onclick="filex()" style="color: #ffffff; padding: 10px; font-weight: bold; font-size: 20px; width: 90%; background: #2269B7; border: 1px solid #2269B7; border-radius: 6px;">決定</button><br><br>
 			</div>
 		</div>
 		<script>
@@ -1339,3 +1354,4 @@
 		</script>
 	</body>
 </html>
+
