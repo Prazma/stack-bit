@@ -446,6 +446,9 @@
 			<span id="menstat">0</span>
 		</div>
 		<div id="proport" style="display: block;">
+			<div class="banner" style="display: none" id="band">
+				この機種はサポートされていません。<button class="btn btn-danger">アプリを使い続ける</button>
+			</div>
 			<div id="quik">
 				<div id="display">
 					<div id="marg">
@@ -1325,6 +1328,11 @@
 			</div>
 		</div>
 		<script>
+			if(window.localStorage) {
+				document.getElementById("band").style.display = "none";
+			} else {
+				document.getElementById("band").style.display = "block";
+			}
 			if(localStorage.mimoney) {
 				filox();
 			}
