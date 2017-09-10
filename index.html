@@ -1019,6 +1019,8 @@
 					document.getElementById("dillet").style.display = "none";
 				}
 				function clrhist() {
+					document.getElementById("confirmio").style.display = "none";
+					document.getElementById("donio").style.display = "block";
 					localStorage.clear();
 					setTimeout( function () {
 						document.getElementById("statr").innerHTML = "削除できました！";
@@ -1247,7 +1249,7 @@
 							<option value="ZWL">ZWL</option>
 						</select>
 			</div>
-			<div id="reshist" class="histcloud" style="background: #ffffff; margin-top: 120px; text-align: center; margin-bottom: 10px;">
+			<div id="reshist" class="histcloud" style="background: #ffffff; margin-top: 130px; text-align: center; margin-bottom: 10px;">
 				<div class="histcloud">
 					<span style="font-weight: lighter; color: #737373;">履歴がありません</span>
 				</div>
@@ -1256,14 +1258,34 @@
 		<div id="settings" style="display: none;  opacity: 0;">
 			<div id="navi" style="background: #404FAD;">設定</div>
 			<div class="histcloud" style="margin-top: 60px; text-align: center;">
-				<span style="font-size: 23px; font-weight: bold">履歴</span>
+				<span style="font-size: 23px; font-weight: bold">おこづかい帳</span>
 				<div style="margin-top: 10px;">
-					<button class="platbtn" style="width: 96.5%; background: #F15249; color: #ffffff; border-color: #F15249; font-size: 20px;" onclick="clrhist()" data-toggle="modal" data-target="#myModal">履歴をすべて消す</button>
+					<hr>
+					<span class="gitpan">おこづかいの残額</span><br>
+					<input class="crcy" style="width: 90%;" placeholder="残額を入力">
+				</div>
+			</div>
+			<div class="histcloud" style="margin-top: 60px; text-align: center;">
+				<span style="font-size: 23px; font-weight: bold">データ</span>
+				<div style="margin-top: 10px;">
+					<hr>
+					<span class="gitpan">データを全て削除</span><br>
+					<button class="platbtn" style="width: 90%; background: #F15249; color: #ffffff; border-color: #F15249; font-size: 20px;" data-toggle="modal" data-target="#myModal">履歴をすべて消す</button>
 				</div>
 			</div>
 		</div>
 		<div class="modal fade" id="myModal" role="dialog">
-			<div class="modal-dialog">
+			<div id="confirmio" class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body" style="text-align: center;">
+						<h4>本当に削除しますか？</h4>
+					</div>
+				</div>
+				<div class="modal-footer" style="text-align: center;">
+					<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button><button class="btn btn-danger" onclick="clrhist()" style="margin-left: 20px;">削除する</button>
+				</div>
+			</div>
+			<div id="donio" class="modal-dialog" style="display: none;">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-body" id="dltconthst" style="text-align: center;">
