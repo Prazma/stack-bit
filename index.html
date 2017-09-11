@@ -910,62 +910,22 @@
 							var fok = document.getElementById("dispan").innerHTML;
 							var sty = localStorage.historyStackbitAuthDatas;
 							var str = sty.split(",");
-							var dub = localStorage.subferAuth;
-							var sub = dub.split(",");
-							var par = localStorage.carferAuth
-							var car = par.split(",");
 							str.push(fok+wok);
-							sub.push(fok);
-							car.push(wok);
-							fx.rates = data.rates;
-							var rate = fx(1).from(wok).to("JPY");
-							var tele = document.getElementById("dispan").innerHTML;
-							if(localStorage.goAuth) {
-								var mat = localStorage.goAuth;
-								var til = (rate.toFixed(2)*tele);
-								localStorage.goAuth = mat + til;
-							} else {
-								var til = (rate.toFixed(2)*tele);
-								localStorage.goAuth = til;
-							}
-							var fellila = localStorage.goAuth;
 							var fin = str.join(",");
-							var subfer = sub.join(",");
-							var carfer = car.join(",");
 							console.log(str);
 							console.log(fin);
 							localStorage.historyStackbitAuthDatas = fin;
-							localStorage.subferAuth = subfer;
-							localStorage.carferAuth = carfer;
+							var hex = localStorage.cookies;
+							var rilo = fx(1).from(first).to("JPY");
+							var fins = (rilo.toFixed(2)*hex);
+							var git = localStorage.intex;
+							var varem = git.split(",");
+							varem.push(fins);
+							localStorage.intex = varem.join(",");
 							setTimeout( function () {
 								tek();
 								gou();
 							}, 500)
-						} else {
-							var woa = document.getElementById("curnet").value;
-							var wod = document.getElementById("frscrcy").value;
-							var wok = document.getElementById("seccrcy").value;
-							var fok = document.getElementById("dispan").innerHTML;
-							var hist = [];
-							var subs = [];
-							var cars = [];
-							hist.push(fok+wok);
-							subs.push(fok);
-							var ft = localStorage.cookies;
-							var rate = fx(1).from(wok).to("JPY");
-							var til = (rate.toFixed(2)*tele);
-							var gil = (rate.toFixed(2)*ft);
-							localStorage.goAuth = til;
-							var mendes = localStorage.goAuth;
-							cars.push(wok);
-							var stats = hist.join();
-							var subfer = subs.join();
-							var carfer = subs.join();
-							localStorage.historyStackbitAuthDatas = stats;
-							localStorage.subferAuth = subfer;
-							localStorage.carferAuth = carfer;
-							document.getElementById("reshist").innerHTML = "";
-							document.getElementById("reshist").innerHTML = "<div class='histcloud'>"+stats+"</div><br>";
 						}
 					}
 					$.getJSON('dat/latest', demo)
@@ -1041,8 +1001,8 @@
 					}, 500);
 				}
 				function filox() {
-					document.getElementById("zanstar").value = localStorage.mimoney;
 					document.getElementById("dillet").style.display = "none";
+					document.getElementById("zanstar").value = localStorage.mimoney;
 				}
 				function filex() {
 					localStorage.mimoney = document.getElementById("strtmimoney").value;
@@ -1329,7 +1289,6 @@
 				</div>
 			</div>
 			<div id="donio" class="modal-dialog" style="display: none;">
-				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-body" id="dltconthst" style="text-align: center;">
 						<img src="img/loadbit.gif" height="50px">
@@ -1355,16 +1314,9 @@
 		</div>
 		<script>
 			tek();
-			if(window.localStorage) {
-				document.getElementById("band").style.display = "none";
-			} else {
-				document.getElementById("band").style.display = "block";
-			}
 			if(localStorage.mimoney) {
 				filox();
 			}
 		</script>
 	</body>
 </html>
-
-
