@@ -438,6 +438,79 @@
 				border: 0.5px solid #E3E9EE;
 				width: 387px;
 			}
+			.gitbtn {
+				color: #fff;
+				background-color: #28a745;
+				background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+				padding: 9px 0px;
+				line-height: 20px
+				position: relative;
+				display: inline-block;
+				font-size: 20px;
+				font-weight: 600;
+				line-height: 20px;
+				white-space: nowrap;
+				vertical-align: middle;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				background-repeat: repeat-x;
+				background-position: -1px -1px;
+				background-size: 110% 110%;
+				border: 1px solid rgba(27, 31, 35, 0.2);
+				border-radius: 0.25em;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				width: 90%;
+			}
+			.gitbtn:hover {
+				background-color: #279f43;
+				background-image: none;
+				border-color: rgba(27, 31, 35, 0.5);
+				box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15)
+			}
+			.gitbtn-danger {
+				color: #cb2431;
+				background-color: #fafbfc;
+				background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
+				padding: 9px 0px;
+				line-height: 20px
+				position: relative;
+				display: inline-block;
+				font-size: 20px;
+				font-weight: 600;
+				line-height: 20px;
+				white-space: nowrap;
+				vertical-align: middle;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				background-repeat: repeat-x;
+				background-position: -1px -1px;
+				background-size: 110% 110%;
+				border: 1px solid rgba(27, 31, 35, 0.2);
+				border-radius: 0.25em;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				width: 90%;
+			}
+			.gitbtn-danger:hover {
+				color: #fff;
+				background-color: #cb2431;
+				background-image: linear-gradient(-180deg, #de4450 0%, #cb2431 90%);
+				border-color: rgba(27, 31, 35, 0.5);
+			}
+			.gitbtn-danger:active {
+				color: #fff;
+				background-color: #b5202c;
+				background-image: none;
+				border-color: rgba(27, 31, 35, 0.5);
+				box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15);	
+			}
 		</style>
 	</head>
 	<body>
@@ -843,7 +916,7 @@
 						for (i = 0; i < clow; i++) {
 							spli = clow - i - 1;
 							console.log(his[spli]);
-							document.getElementById("reshist").innerHTML += "<div id='shula' class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' onchange='plow()' style='width: 90%; margin-top: 10px;' id='"+spli+"'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='1' onclick='dlt()' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
+							document.getElementById("reshist").innerHTML += "<div id='shula' class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' onchange='plow()' style='width: 90%; margin-top: 10px;' id='"+spli+"'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='1' onclick='dlt()' class='gitbtn-danger' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
 						}
 						var int = localStorage.intex.split(",");
 						var fit = int.length;
@@ -1276,7 +1349,7 @@
 				<div style="margin-top: 10px;">
 					<hr>
 					<span class="gitpan">データを全て削除</span><br>
-					<button class="platbtn" style="width: 90%; background: #F15249; color: #ffffff; border-color: #F15249; font-size: 20px;" data-toggle="modal" data-target="#myModal">履歴をすべて消す</button><br><br>
+					<button class="gitbtn-danger" data-toggle="modal" data-target="#myModal">履歴をすべて消す</button><br><br>
 				</div>
 			</div>
 		</div>
@@ -1310,7 +1383,7 @@
 			<div id="sindia" class="histcloud" style="margin-top: 30px;"><br>
 				<span style="color: #000000; font-size: 30px;">お小遣い金額を<br>入力してください</span><br><br>
 				<input id="strtmimoney" class="crcy" type="tel" style="width: 90%" placeholder="単位は円です"><br><br>
-				<button onclick="filex()" style="color: #ffffff; padding: 10px; font-weight: bold; font-size: 20px; width: 90%; background: #2269B7; border: 1px solid #2269B7; border-radius: 6px;">決定</button><br><br>
+				<button onclick="filex()" class="gitbtn">決定</button><br><br>
 			</div>
 		</div>
 		<script>
