@@ -305,7 +305,6 @@
             }
 			#history {
 				width: 100%;
-				min-height: 100vh;
 				background: #f1f1f1;
 				transition: 0.5s;
 				-webkit-transition: 0.5s;
@@ -1328,7 +1327,7 @@
 							<option value="ZWL">ZWL</option>
 						</select>
 			</div>
-			<div id="reshist" class="histcloud" style="background: #ffffff; margin-top: 130px; text-align: center; margin-bottom: 10px;">
+			<div id="reshist" class="histcloud" style="background: #ffffff; margin-top: 130px; text-align: center; margin-bottom: 10px; background-color: #fafbfc;">
 				<div class="histcloud">
 					<span style="font-weight: lighter; color: #737373;">履歴がありません</span>
 				</div>
@@ -1336,40 +1335,42 @@
 		</div>
 		<div id="settings" style="display: none;  opacity: 0;">
 			<div id="navi" style="background: #404FAD;">設定</div>
-			<div class="histcloud" style="margin-top: 60px; text-align: center;">
-				<span style="font-size: 23px; font-weight: bold">おこづかい帳</span>
-				<div style="margin-top: 10px;">
-					<hr>
-					<span class="gitpan">おこづかいの残額</span><br>
-					<input id="zanstar" class="crcy" style="width: 90%;" placeholder="残額を入力"><br><br>
+			<div class="histcloud" style="margin-top: 60px; text-align: center; background-color: #fafbfc;">
+				<div class="histcloud" style="margin-top: 20px; text-align: center;">
+					<span style="font-size: 23px; font-weight: bold">おこづかい帳</span>
+					<div style="margin-top: 10px;">
+						<hr>
+						<span class="gitpan">おこづかいの残額</span><br>
+						<input id="zanstar" class="crcy" style="width: 90%;" placeholder="残額を入力" style="background-color: #fafbfc;"><br><br>
+					</div>
 				</div>
-			</div>
-			<div class="histcloud" style="margin-top: 60px; text-align: center;">
-				<span style="font-size: 23px; font-weight: bold">データ</span>
-				<div style="margin-top: 10px;">
-					<hr>
-					<span class="gitpan">データを全て削除</span><br>
-					<button class="gitbtn-danger" data-toggle="modal" data-target="#myModal">履歴をすべて消す</button><br><br>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="myModal" role="dialog">
-			<div id="confirmio" class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-body" style="text-align: center;">
-						<h4>本当に削除しますか？</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button><button class="btn btn-danger" onclick="clrhist()" style="margin-left: 20px;">削除する</button>
+				<div class="histcloud" style="margin-top: 20px; text-align: center;">
+					<span style="font-size: 23px; font-weight: bold">データ</span>
+					<div style="margin-top: 10px;">
+						<hr>
+						<span class="gitpan">データを全て削除</span><br>
+						<button class="gitbtn-danger" data-toggle="modal" data-target="#myModal">履歴をすべて消す</button><br><br>
 					</div>
 				</div>
 			</div>
-			<div id="donio" class="modal-dialog" style="display: none;">
-				<div class="modal-content">
-					<div class="modal-body" id="dltconthst" style="text-align: center;">
-						<img src="img/loadbit.gif" height="50px">
-						<h4 id="statr">履歴を削除しています</h4>
+			<div class="modal fade" id="myModal" role="dialog">
+				<div id="confirmio" class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body" style="text-align: center;">
+							<h4>本当に削除しますか？</h4>
+							<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button><button class="btn btn-danger" onclick="clrhist()" style="margin-left: 20px;">削除する</button>
+						</div>
 					</div>
-					<div class="modal-footer">
-						<button id="clsbtnclshs" onclick="clsstatr()" type="button" class="btn btn-default" data-dismiss="modal" disabled>閉じる</button>
+				</div>
+				<div id="donio" class="modal-dialog" style="display: none;">
+					<div class="modal-content">
+						<div class="modal-body" id="dltconthst" style="text-align: center;">
+							<img src="img/loadbit.gif" height="50px">
+							<h4 id="statr">履歴を削除しています</h4>
+						</div>
+						<div class="modal-footer">
+							<button id="clsbtnclshs" onclick="clsstatr()" type="button" class="btn btn-default" data-dismiss="modal" disabled>閉じる</button>
+						</div>
 					</div>
 				</div>
 			</div>
