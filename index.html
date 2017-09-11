@@ -1005,10 +1005,11 @@
 					document.getElementById("zanstar").value = localStorage.mimoney;
 				}
 				function filex() {
+					localStorage.intex = document.getElementById("strtmimoney").value;
 					localStorage.mimoney = document.getElementById("strtmimoney").value;
 					var monex = localStorage.mimoney;
 					var int = [monex];
-					localStorage.intex = int.join(",");
+					localStorage.mimoney = int.join(",");
 					var hai = [monex + "JPY"];
 					var otis = hai.join(",");
 					localStorage.historyStackbitAuthDatas = otis;
