@@ -440,7 +440,7 @@
 			}
 		</style>
 	</head>
-	<body onload="tek()">
+	<body>
 		<div style="display: none">
 			<span id="navistat">0</span>
 			<span id="menstat">0</span>
@@ -831,25 +831,30 @@
 			</div>
 			<script type="text/javascript">
 				function tek() {
+					console.log(localStorage.historyStackbitAuthDatas);
 					if (localStorage.historyStackbitAuthDatas) {
 						document.getElementById("reshist").innerHTML = "";
 						var fel = localStorage.historyStackbitAuthDatas;
 						var his = fel.split(",");
-						console.log(his);
-						var pel = localStorage.subferAuth;
-						var tel = localStorage.carferAuth;
-						var sub = pel.split(",");
-						var car = tel.split(",");
 						var clow = his.length;
+						console.log(clow + 1);
+						console.log(his);
 						var spli;
-						if(clow == 1) {
-							document.getElementById("reshist").innerHTML += "<div id='shula' class='histcloud'><span>" + his[1] + "</span><br><select class='crcy' onchange='plow()' style='width: 90%; margin-top: 10px;' id='1'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='1' onclick='dlt()' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
-						} else {
-							for (i = 0; i < clow; i++) {
-								spli = clow - i - 1;
-								document.getElementById("reshist").innerHTML += "<div id='shula' class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' onchange='plow()' style='width: 90%; margin-top: 10px;' id='"+spli+"'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='1' onclick='dlt()' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
-							}
+						for (i = 0; i < clow; i++) {
+							spli = clow - i - 1;
+							console.log(his[spli]);
+							document.getElementById("reshist").innerHTML += "<div id='shula' class='histcloud'><span>" + his[spli] + "</span><br><select class='crcy' onchange='plow()' style='width: 90%; margin-top: 10px;' id='"+spli+"'><option value='plus'>収入</option><option value='minus'>支出</option></select><br><button id='1' onclick='dlt()' class='dltbtn' style='width: 90%; margin-top: 10px;'>削除</button></div><br>";
 						}
+						var int = localStorage.intex.split(",");
+						var fit = int.length;
+						var stile = 0;
+						console.log(fit+" is intex length");
+						for(i = 0; i < fit; i++) {
+							var tnt = fit;
+							int[fit];
+							stile += int[fit];
+						}
+						document.getElementById("goukei").innerHTML = stile;
 					}
 					gou();
 				}
@@ -946,8 +951,10 @@
 							var cars = [];
 							hist.push(fok+wok);
 							subs.push(fok);
+							var ft = localStorage.cookies;
 							var rate = fx(1).from(wok).to("JPY");
 							var til = (rate.toFixed(2)*tele);
+							var gil = (rate.toFixed(2)*ft);
 							localStorage.goAuth = til;
 							var mendes = localStorage.goAuth;
 							cars.push(wok);
@@ -965,8 +972,13 @@
 					
 				}
 				function chk() {
+					var den = localStorage.historyStackbitAuthDatas;
+					var fen = den.split(",");
+					var ft = document.getElementById("curnet").value;
 					var frs = document.getElementById("frscrcy").value;
 					var sec = document.getElementById("seccrcy").value;
+					fen.push(ft+frs);
+					localStorage.cookies = ft;
 					getRate(frs, sec);
 				}
 				function upd() {
@@ -1035,17 +1047,19 @@
 				function filex() {
 					localStorage.mimoney = document.getElementById("strtmimoney").value;
 					var monex = localStorage.mimoney;
+					var int = [monex];
+					localStorage.intex = int.join(",");
 					var hai = [monex + "JPY"];
 					var otis = hai.join(",");
 					localStorage.historyStackbitAuthDatas = otis;
-					document.getElementById("dillet").innerHTML = "<span class'redit'>StackHubへようこそ！</span>";
+					document.getElementById("sindia").innerHTML = "<span class'redit'>StackHubへようこそ！</span>";
 					setTimeout( function () {
-						document.getElementById("dillet").style.opacity = "0";
-					}, 200);
+						document.getElementById("dillet").style.display = "none";
+					}, 1000);
 					setTimeout( function () {
 						filox();
 						tek();
-					}, 400);
+					}, 1200);
 				}
 				function clrhist() {
 					document.getElementById("confirmio").style.display = "none";
@@ -1343,6 +1357,7 @@
 			</div>
 		</div>
 		<script>
+			tek();
 			if(window.localStorage) {
 				document.getElementById("band").style.display = "none";
 			} else {
@@ -1354,4 +1369,3 @@
 		</script>
 	</body>
 </html>
-
