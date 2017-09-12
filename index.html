@@ -426,6 +426,8 @@
 				top: 0;
 				width: 100%;
 				height: 100vh;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
 			}
 			.redit {
 				color: #8B9298;
@@ -463,12 +465,13 @@
 				-webkit-appearance: none;
 				-moz-appearance: none;
 				width: 90%;
+				transition: 0.2s;
+				-webkit-transition: 0.2s;
 			}
-			.gitbtn:hover {
-				background-color: #279f43;
-				background-image: none;
-				border-color: rgba(27, 31, 35, 0.5);
-				box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15)
+			.gitbtn:disabled {
+				color: #000000;
+				background-color: #fafbfc;
+				background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
 			}
 			.gitbtn-danger {
 				color: #cb2431;
@@ -1037,6 +1040,24 @@
 						document.getElementById("settinglau").disabled = false;
 					}, 500);
 				}
+				function chkmi() {
+					var fin = document.getElementById("strtmimoney").value;
+					if(fin == "") {
+						document.getElementById("kettei").disabled = true;
+					} else {
+						document.getElementById("kettei").disabled = false;
+					}
+				}
+				function pillport() {
+					document.getElementById("pilload").style.display = "block";
+					setTimeout( function () {
+						document.getElementById("sindia").style.opacity = "0";
+					}, 500);
+					setTimeout( function () {
+						document.getElementById("sindia").style.opacity = "1";
+						filex();
+					}, 1100);
+				}
 				function ock() {
 					var stvr = document.getElementById("curnet").value;
 					if(stvr == "0") {
@@ -1087,12 +1108,15 @@
 					localStorage.historyStackbitAuthDatas = otis;
 					document.getElementById("sindia").innerHTML = "<span class'redit'>StackHubへようこそ！</span>";
 					setTimeout( function () {
-						document.getElementById("dillet").style.display = "none";
+						document.getElementById("dillet").style.opacity = "0";
 					}, 1000);
+					setTimeout( function () {
+						document.getElementById("dillet").style.display = "none";
+					}, 1500);
 					setTimeout( function () {
 						filox();
 						tek();
-					}, 1200);
+					}, 1700);
 				}
 				function clrhist() {
 					document.getElementById("confirmio").style.display = "none";
@@ -1383,8 +1407,12 @@
 		<div id="dillet" style="text-align: center; background: #f1f1f1;">
 			<div id="sindia" class="histcloud" style="margin-top: 30px;"><br>
 				<span style="color: #000000; font-size: 30px;">お小遣い金額を<br>入力してください</span><br><br>
-				<input id="strtmimoney" class="crcy" type="tel" style="width: 90%" placeholder="単位は円です"><br><br>
-				<button onclick="filex()" class="gitbtn">決定</button><br><br>
+				<input id="strtmimoney" onkeyup="chkmi()" class="crcy" type="tel" style="width: 90%" placeholder="単位は円です"><br><br>
+				<button id="kettei" onclick="pillport()" class="gitbtn" disabled>決定</button><br><br>
+				<div id="pilload" style="display: none;">
+					<img src="img/loadbit.gif" height="50px"><br>
+					<span>セーブしてます...</span>
+				</div>
 			</div>
 		</div>
 		<script>
