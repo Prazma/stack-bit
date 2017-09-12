@@ -437,7 +437,7 @@
 				font-weight: lighter;
 			}
 			hr {
-				border: 0.5px solid #E3E9EE;
+				border: 0.5px solid #737373;
 				width: 387px;
 			}
 			.gitbtn {
@@ -468,8 +468,6 @@
 				width: 90%;
 				transition: 0.2s;
 				-webkit-transition: 0.2s;
-				margin-right: auto;
-				margin-left: auto;
 			}
 			.gitbtn:disabled {
 				color: #000000;
@@ -502,8 +500,6 @@
 				-webkit-appearance: none;
 				-moz-appearance: none;
 				width: 90%;
-				margin-right: auto;
-				margin-left: auto;
 			}
 			.gitbtn-danger:hover {
 				color: #fff;
@@ -517,6 +513,59 @@
 				background-image: none;
 				border-color: rgba(27, 31, 35, 0.5);
 				box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15);	
+			}
+			.gray {
+				color: #24292e;
+				background-color: #eff3f6;
+				background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%)
+			}
+			.pilanx {
+				padding: 8px 10px;
+				line-height: 16px;
+				background: #f6f8fa;
+				border-bottom: 1px solid #e1e4e8;
+				font-size: 16px;
+				color: #586069;
+				list-style-type: none;
+				
+			}
+			.octicon {
+				display: block;
+				float: right;
+				color: #c6cbd1;
+				cursor: pointer;
+				background: transparent;
+				border: none;
+				padding: 0;
+			}
+			.sodiumcarbon {
+				position: relative;
+				width: 90%;
+				margin-top: 4px;
+				margin-bottom: 20px;
+				margin-right: auto;
+				margin-left: auto;
+				overflow: hidden;
+				font-size: 16px;
+				color: #586069;
+				background-color: #fff;
+				background-clip: padding-box;
+				border: 1px solid rgba(27, 31, 35, 0.15);
+				border-radius: 3px;
+				box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);	
+			}
+			.slccarbon {
+				border: none;
+				text-align: left;
+				margin: 0;
+				background-color: #fff;
+				padding: 8px 8px 8px 30px;
+				width: 100%;
+				font-size: 20px;
+			}
+			.slcted {
+				color: #fff;
+				background-color: #0366d6;
 			}
 		</style>
 	</head>
@@ -897,9 +946,42 @@
 							<option value="ZMK">ZMK</option>
 							<option value="ZWL">ZWL</option>
 						</select><br><hr>
-						<button class="gitbtn" onclick="dshmdn()" style="display: block">
-							<span style="margin-left: 10px;">価格をメモ</span>
-						</button>
+						<button id="doemd" class="gitbtn gray" onclick="opnmenkip()" kip="shu">収入 <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDI5Mi4zNjIgMjkyLjM2MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjkyLjM2MiAyOTIuMzYyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Ni45MzUsNjkuMzc3Yy0zLjYxNC0zLjYxNy03Ljg5OC01LjQyNC0xMi44NDgtNS40MjRIMTguMjc0Yy00Ljk1MiwwLTkuMjMzLDEuODA3LTEyLjg1LDUuNDI0ICAgQzEuODA3LDcyLjk5OCwwLDc3LjI3OSwwLDgyLjIyOGMwLDQuOTQ4LDEuODA3LDkuMjI5LDUuNDI0LDEyLjg0N2wxMjcuOTA3LDEyNy45MDdjMy42MjEsMy42MTcsNy45MDIsNS40MjgsMTIuODUsNS40MjggICBzOS4yMzMtMS44MTEsMTIuODQ3LTUuNDI4TDI4Ni45MzUsOTUuMDc0YzMuNjEzLTMuNjE3LDUuNDI3LTcuODk4LDUuNDI3LTEyLjg0N0MyOTIuMzYyLDc3LjI3OSwyOTAuNTQ4LDcyLjk5OCwyODYuOTM1LDY5LjM3N3oiIGZpbGw9IiMwMDAwMDAiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" height="14px;"/></button>
+						<div id="filanthropics" class="sodiumcarbon" style="display: none;">
+							<div class="pilanx">
+								<button class="octicon octicon-x js-menu-close" onclick="clscarbon()"><svg aria-label="Close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg></button>
+								<span class="select-menu-title" style="font-weight: 600; color: #24292e; line-height: 16px; font-size: 16px;">金額の種類を選択</span>
+							</div>
+							<button class="slccarbon slcted">収入</button>
+							<button class="slccarbon">支出</button>
+						</div>
+						<span style="display: none" id="sq">0</span>
+						<script>
+							function opnmenkip() {
+								var shigeru = document.getElementById("sq").innerHTML;
+								if(shigeru == "0") {
+									document.getElementById("doemd").style.background = "#e9ecef";
+									document.getElementById("doemd").style.borderColor = "rgba(27, 31, 35, 0.35)";
+									document.getElementById("doemd").style.boxShadow = "inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15)";
+									document.getElementById("filanthropics").style.display = "block";
+									document.getElementById("sq").innerHTML = "1";
+								} else {
+									document.getElementById("doemd").style.background = "#eff3f6";
+									document.getElementById("doemd").style.borderColor = "rgba(27, 31, 35, 0.35)";
+									document.getElementById("doemd").style.boxShadow = "none";
+									document.getElementById("filanthropics").style.display = "none";
+									document.getElementById("sq").innerHTML = "0";
+								}
+							}
+							function clscarbon() {
+								document.getElementById("doemd").style.background = "#eff3f6";
+								document.getElementById("doemd").style.borderColor = "rgba(27, 31, 35, 0.35)";
+								document.getElementById("doemd").style.boxShadow = "none";
+								document.getElementById("filanthropics").style.display = "none";
+								document.getElementById("sq").innerHTML = "0";
+							}
+						</script>
+						<button class="gitbtn" onclick="dshmdn()">価格をメモ</button>
 					</div>
 				</div>
 			</div>
@@ -1368,7 +1450,7 @@
 					<span style="font-size: 23px; font-weight: bold">おこづかい帳</span>
 					<div style="margin-top: 10px;">
 						<hr>
-						<span class="gitpan">おこづかいの残額</span><br>
+						<span class="gitpan">お小遣いの始額</span><br>
 						<input id="zanstar" class="crcy" style="width: 90%;" placeholder="残額を入力" style="background-color: #fafbfc;"><br><br>
 					</div>
 				</div>
@@ -1427,4 +1509,3 @@
 		</script>
 	</body>
 </html>
-
